@@ -1,10 +1,10 @@
 #!/bin/sh
 # This script readies the project for deployment and initializes the gitlab repo
 
-if [ -f nupo.config ]
+if [ -f easyinnit.config ]
 then
   echo config file found, sourcing...
-  source nupo.config
+  source easyinnit.config
   echo $name
 
 else
@@ -39,7 +39,7 @@ token=$token
 project=$project
 ip=$ip
 domain=$domain
-email=$email" >> nupo.config
+email=$email" >> easyinnit.config
 
 fi
 
@@ -141,3 +141,8 @@ dokku letsencrypt:cron-job --add
 " > server-script.sh
 
 ssh root@$ip "bash -s" < server-script.sh
+
+
+
+
+
