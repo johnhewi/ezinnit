@@ -18,8 +18,8 @@ wget https://raw.githubusercontent.com/johnhewi/easyinnit/main/easyinnit.config
 ### you will need:
 * your gitlab username 
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
-* [your gitlab personal access token](script%20tutorial/get_getlab_personal_access_token.md)
-* [your server ip address](script%20tutorial/sign_into_server.md)
+* your gitlab personal access token
+* your server ip address
 * the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
 * the name of the app you wish to create on the server, for example, `mynewapp`. This will also become the name of the project on gitlab.
 * email address to use for registering with [letsencrypt](https://letsencrypt.org/)
