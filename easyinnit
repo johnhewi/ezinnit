@@ -1,11 +1,10 @@
 #!/bin/sh
-# This script readies the project for deployment and initializes the gitlab repo
+# This script deploys the app and initializes the gitlab repo for automated continuous integration and deployment
 
 if [ -f easyinnit.config ]
 then
   echo config file found, sourcing...
   source easyinnit.config
-  echo $name
 
 else
 
@@ -20,8 +19,9 @@ else
   echo enter gitlab personal token
   read token
 
-  echo enter project name \(this will the name of the gitlab repository and the app name\)
-  read project
+  echo enter app name \(if a django app, this must match your django project name\)
+  echo this will become the name of the gitlab repository and the dokku app\)
+  read appname
 
   echo new server\'s ip address
   read ip
@@ -32,14 +32,19 @@ else
   echo enter email for letsencrypt.org
   read email
 
+  echo enter app type \(\"flask\" or \"django\"\)
+  read app_type
+
 
   echo "username=$username
 gitlab_domain=$gitlab_domain
 token=$token
-project=$project
+appname=$appname
 ip=$ip
 domain=$domain
-email=$email" >> easyinnit.config
+email=$email
+app_type=$app_type" >> easyinnit.config
+
 
 fi
 
@@ -50,7 +55,31 @@ gi python,pycharm >> .gitignore
 
 pip install gunicorn
 
-echo "web: gunicorn app:app" > Procfile
+if [ "$app_type" = "flask" ]
+then
+  echo "web: gunicorn app:app" > Procfile
+else [ "$app_type" = "django" ]
+  echo "web: gunicorn $appname.wsgi" > Procfile
+  echo "python-3.8.10" > runtime.txt
+  echo "f = open(\"$appname/settings.py\")
+with open(\"$appname/settings.py\", \"a\") as f:
+    f.write(\"\nPROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))\nSTATIC_ROOT = \"
+            \"os.path.join(PROJECT_ROOT, 'static')\nALLOWED_HOSTS = ['$ip','$domain']\n\")
+
+with open(\"$appname/settings.py\") as f:
+    lines = f.readlines()
+
+with open(\"$appname/settings.py\", \"w\") as f:
+    lines.insert(0, \"import os\n\")
+    f.write(\"\".join(lines))" > easyinnit_django_settings.py
+  python3 easyinnit_django_settings.py
+  python3 manage.py collectstatic
+  python3 manage.py makemigrations
+  python3 manage.py migrate
+fi
+
+
+
 
 echo "image: dokku/ci-docker-image
 
@@ -65,24 +94,24 @@ deploy:
   only:
     - main
   variables:
-    GIT_REMOTE_URL: ssh://dokku@$ip:22/$project
+    GIT_REMOTE_URL: ssh://dokku@$ip:22/$appname
   script: dokku-deploy
   after_script: [dokku-unlock]" > .gitlab-ci.yml
 
 pip freeze > requirements.txt
 
-# initialize git project
+# initialize git appname
 # shellcheck disable=SC2164
 cd existing_folder
 git init --initial-branch=main
-git push --set-upstream git@git.synctivate.com:/$username/$project.git
-git remote add origin git@git.synctivate.com:$username/$project.git
+git push --set-upstream git@git.synctivate.com:/$username/$appname.git
+git remote add origin git@git.synctivate.com:$username/$appname.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
 
 #https://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools
-runner_token=$(curl --header "PRIVATE-TOKEN: $token" "https://$gitlab_domain/api/v4/projects/$username%2F$project" | \
+runner_token=$(curl --header "PRIVATE-TOKEN: $token" "https://$gitlab_domain/api/v4/projects/$username%2F$appname" | \
 python3 -c "import sys, json; print(json.load(sys.stdin)['runners_token'])")
 
 
@@ -96,16 +125,16 @@ ssh_key=\`cat /root/.ssh/id_rsa\`
 echo ssh key: \$ssh_key
 
 curl --request POST --header \"PRIVATE-TOKEN: $token\" \
-    \"https://$gitlab_domain/api/v4/projects/$username%2F$project/variables\" \
+    \"https://$gitlab_domain/api/v4/projects/$username%2F$appname/variables\" \
     --form \"key=SSH_PRIVATE_KEY\" --form \"value=\$ssh_key\"
 
 wget https://raw.githubusercontent.com/dokku/dokku/v0.28.4/bootstrap.sh
 sudo DOKKU_TAG=v0.28.4 bash bootstrap.sh
 cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
-dokku apps:create $project
+dokku apps:create $appname
 dokku domains:clear-global
-dokku domains:set $project $domain
-dokku proxy:ports-set $project http:80:5000
+dokku domains:set $appname $domain
+dokku proxy:ports-set $appname http:80:5000
 
 # Download the binary for your system
 sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
@@ -134,15 +163,10 @@ sudo gitlab-runner register \
   --access-level=\"not_protected\"
 
 sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
-dokku config:set --no-restart $project DOKKU_LETSENCRYPT_EMAIL=$email
-dokku letsencrypt:enable $project
+dokku config:set --no-restart $appname DOKKU_LETSENCRYPT_EMAIL=$email
+dokku letsencrypt:enable $appname
 dokku letsencrypt:cron-job --add
 
 " > server-script.sh
 
 ssh root@$ip "bash -s" < server-script.sh
-
-
-
-
-
