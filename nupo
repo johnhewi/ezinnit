@@ -29,13 +29,17 @@ else
   echo enter domain for new app \(\"mynewapp.mydomain.com\"\)
   read domain
 
+  echo enter email for letsencrypt.org
+  read email
+
 
   echo "username=$username
 gitlab_domain=$gitlab_domain
 token=$token
 project=$project
 ip=$ip
-domain=$domain" >> nupo.config
+domain=$domain
+email=$email" >> nupo.config
 
 fi
 
@@ -128,6 +132,11 @@ sudo gitlab-runner register \
   --run-untagged=\"true\" \
   --locked=\"false\" \
   --access-level=\"not_protected\"
+
+sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+dokku config:set --no-restart $project DOKKU_LETSENCRYPT_EMAIL=$email
+dokku letsencrypt:enable $project
+dokku letsencrypt:cron-job --add
 
 " > server-script.sh
 
