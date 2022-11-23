@@ -16,22 +16,22 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 ```
 
 ### you will need:
-* your gitlab username 
+* your gitlab username
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
 * your gitlab personal access token
 * your server ip address
 * the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
 * the name of the app you wish to create on the server, for example, `mynewapp`. This will also become the name of the project on gitlab.
 * email address to use for registering with [letsencrypt](https://letsencrypt.org/)
-* the type of the app: either flask, django, fastApi or just deploy the environment as is* 
+* the type of the app: either flask, django, fastApi or just deploy the environment as is*
 ### warning
 * if you select an app, ezinnit will write over your procfile, settings.py, main.py etc.
 * app selection is only for use in initializing a brand new flask, django or fastApi app
 
 ### ezinnit.config file
-if you don't have a ezinnit.config file in your root directory, 
+if you don't have a ezinnit.config file in your root directory,
 the script will prompt you for the above values and create one.
-Alternitively, you can download the ezinnit.config template 
+Alternitively, you can download the ezinnit.config template
 to your root directory and input the values in the file and then run the script.
 
 ### ezinnit's mission:
