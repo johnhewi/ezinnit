@@ -1,10 +1,10 @@
 # ezinnit
-ezinnit automatically deploys an app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
+ezinnit automatically deploys a new app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
 
 After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD): commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
 
-There are some additional features for flask, django and fastApi configurations for the initial build. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. The settings.py file will be modified so that debug mode will be ON when running locally. 
+There are some additional features for NEW flask, django and fastApi apps. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is flask, the main.py file will be overwritten.  
 
 ezinnit was created by John Hewitt at https://synctivate.com
 
@@ -24,7 +24,7 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 ```
 
 ### you will need:
-* a virtual environment containing your app with python and pip installed
+* a python 3 virtual environment containing your app
 * your [gitlab](https://gitlab.com) username
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`. If you are using a self-hosted gitlab instance, then the gitlab domain might be something like `git.mydomain.com`)
 * your [gitlab personal access token](tutorial/get_personal_access_token.md)
@@ -36,7 +36,7 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 * the type of the app: either flask, django, fastApi or just deploy the environment as is
 * this script was originally designed to replace the steps in [this tutorial](tutorial/tutorials/deployment_tutorial.md)
 ### warning!
-* if you select an app type, ezinnit will write over your procfile, settings.py, main.py etc.
+* if you select an app type, ezinnit will write over files, including your procfile, settings.py, main.py etc.
 * app selection is only for use in initializing a brand new flask, django or fastApi app
 * if you want to deploy your environment as is, just hit enter when prompted for app type
 
