@@ -83,12 +83,7 @@ else
   echo email: "$email"
   echo app type: "$app_type"
 
-  echo read -p "settings entered, ready for deploy. ezinnit?"
-
-  echo
-  echo
-  echo that\'s ezinnit?
-
+  echo read -p "that's ezinnit? Check settings and then hit enter to deploy"
 
   echo "username=$username
 gitlab_domain=$gitlab_domain
