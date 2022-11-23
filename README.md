@@ -6,6 +6,8 @@ After running ezinnit, your app is hosted on your server, running in a docker co
 
 There are some additional features for NEW flask, django and fastApi apps. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is flask, the main.py file will be overwritten.  
 
+that's ezinnit
+
 ezinnit was created by John Hewitt at https://synctivate.com
 
 ### download ezinnit into your project directory:
@@ -28,6 +30,8 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 * your [gitlab](https://gitlab.com) username
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`. If you are using a self-hosted gitlab instance, then the gitlab domain might be something like `git.mydomain.com`)
 * your [gitlab personal access token](tutorial/get_personal_access_token.md)
+* your local machine's ssh key registered on gitlab
+* your local machine's ssh key registered on your new server (digital ocean sets this up automatically, see [tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * your server ip address (new droplet running Ubuntu 20.04) [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
 * a DNS \"A\" record pointing your subdomain.domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)

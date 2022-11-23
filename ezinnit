@@ -53,7 +53,7 @@ else
   echo enter gitlab personal token
   read -r token
 
-  echo app name becomes the name of the gitlab repository and the dokku app\)
+  echo app name becomes the name of the gitlab repository and the dokku app
   echo IF DJANGO PROJECT, APP NAME MUST MATCH DJANGO PROJECT NAME
   echo App name must begin with lowercase alphanumeric character, and cannot include uppercase characters, colons, or underscores
   echo enter app name
