@@ -19,7 +19,7 @@ echo creates ssh keys on remote server
 echo downloads and installs dokku on remote server
 echo creates dokku app on remote server
 echo sets the domain for the dokku app on remote server
-echo sets the apps port to 5000 on remote server
+echo sets the apps proxy port to 80:5000 on remote server
 echo downloads and creates a gitlab runner on remote server
 echo registers the gitlab runner on remote server
 echo downloads and installs dokku-letsencrypt
@@ -68,9 +68,22 @@ else
   echo enter email for letsencrypt.org
   read -r email
 
-  echo enter app type: flask, django or fastApi
-  echo or just hit enter to deploy
+  echo WARNING: if you select an app, ezinnit will write over your procfile, settings.py, main.py etc.
+  echo enter app type \(flask, django, fastApi, leave blank or enter ezinnit to deploy your environment as is\)
   read -r app_type
+
+  echo hitting enter deploy, are you ready?
+  echo entered information:
+  echo gitlab username: "$username"
+  echo gitlab domain: "$gitlab_domain"
+  echo gitlab personal token: "$token"
+  echo app name: "$appname"
+  echo server ip: "$ip"
+  echo domain: "$domain"
+  echo email: "$email"
+  echo app type: "$app_type"
+  echo read -p "settings entered, ready for deploy. ezinnit?"
+
 
   echo "username=$username
 gitlab_domain=$gitlab_domain
@@ -80,7 +93,6 @@ ip=$ip
 domain=$domain
 email=$email
 app_type=$app_type" >> ezinnit.config
-
 
 fi
 echo creating gitignore from www.toptotal.com/developers/gitignore
