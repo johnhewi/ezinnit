@@ -409,7 +409,7 @@ echo saved as server-script.sh in project directory where ezinnit was run
 echo
 echo gitlab now deploying https://$gitlab_domain/$username/$appname
 echo to https://$domain
-echo that's ezinnit!
+echo that\'s ezinnit!
 echo https://synctivate.com
 " > initialize-server.sh
 echo running initialize-server.sh on server
