@@ -7,7 +7,7 @@ After running ezinnit, your app is hosted on your server, running in a docker co
 There are some additional features for NEW flask, django and fastApi apps. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
 
 
-ezinnit was created by John Hewitt at https://synctivate.com
+ezinnit was created by John Hewitt for https://synctivate.com
 
 ### download ezinnit into your project directory:
 ```bash
