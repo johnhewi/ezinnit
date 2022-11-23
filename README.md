@@ -40,7 +40,7 @@ At the push of a button, your app will be live on your server and ready for cont
 * uses [toptotal](https://www.toptal.com/developers/gitignore) to create a .gitignore file in your project directory
 * installs gunicorn in local environment
 * creates a procfile in project directory
-* for django apps: modifies settings.py, creates runtime.txt, collects static, migrates ands sets local ENV
+* for django apps: replaces settings.py, creates runtime.txt, collects static, migrates ands sets local ENV
 * creates a .gitlab-ci.yml (gitlab pipeline) file in your project directory
 * creates a requirements.txt file in your project directory
 * creates a new gitlab repository and commits your project to main
