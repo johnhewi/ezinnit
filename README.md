@@ -4,7 +4,7 @@ At the push of a button, your app will be live and future changes will be automa
 
 After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD): commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
 
-There are some additional features for NEW flask, django and fastApi apps. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is flask, the main.py file will be overwritten.  
+There are some additional features for NEW flask, django and fastApi apps. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
 
 that's ezinnit
 
