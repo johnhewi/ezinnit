@@ -2,7 +2,7 @@
 
 ### to download easyinnit into your project directory:
 ```bash
-wget https://raw.githubusercontent.com/johnhewi/easyinnit/main/easyinnit
+wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit
 ```
 
 ### to run easyinnit:
@@ -12,7 +12,7 @@ bash easyinnit
 
 ### to download easyinnit.config template:
 ```bash
-wget https://raw.githubusercontent.com/johnhewi/easyinnit/main/easyinnit.config
+wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 ```
 
 ### you will need:
