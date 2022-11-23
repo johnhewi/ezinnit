@@ -23,7 +23,11 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 * the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
 * the name of the app you wish to create on the server, for example, `mynewapp`. This will also become the name of the project on gitlab.
 * email address to use for registering with [letsencrypt](https://letsencrypt.org/)
-* the type of the app: either flask or django
+* the type of the app: either flask, django, fastApi or just deploy the environment as is
+
+### warning
+* if you select an app, ezinnit will write over your procfile, settings.py, main.py etc. 
+* app selection is only for use in initializing a brand new flask, django or fastApi app
 
 ### easyinnit.config file
 if you don't have a easyinnit.config file in your root directory, 
