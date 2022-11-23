@@ -322,7 +322,6 @@ pip freeze > requirements.txt
 echo creating new gitlab repository
 # initialize git appname
 # shellcheck disable=SC2164
-cd existing_folder
 git init --initial-branch=main
 git push --set-upstream git@$gitlab_domain:$username/$appname.git
 git remote add origin git@$gitlab_domain:$username/$appname.git
