@@ -81,8 +81,13 @@ else
   echo server ip: "$ip"
   echo domain: "$domain"
   echo email: "$email"
-  echo app type: "$app_type"
-
+  if [ "$app_type" = "ezinnit" ]
+  then
+    echo app type: deploying environment as is
+  else
+    echo app type: "$app_type"
+  fi
+  echo
   echo read -p "that's ezinnit? Check settings and then hit enter to deploy"
 
   echo "username=$username
@@ -93,8 +98,8 @@ ip=$ip
 domain=$domain
 email=$email
 app_type=$app_type" >> ezinnit.config
-
 fi
+
 echo creating gitignore from www.toptotal.com/developers/gitignore
 echo "function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ ;}" >> \
 ~/.bashrc && source ~/.bashrc
