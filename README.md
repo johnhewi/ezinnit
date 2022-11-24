@@ -1,4 +1,8 @@
-# <center>ezinnit</centered>
+
+
+<p align="center" style="font-size: 50px">
+ezinnit
+</p>
 
 ezinnit automatically deploys a new app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
