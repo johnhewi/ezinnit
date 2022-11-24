@@ -13,7 +13,6 @@ echo for django apps: replaces settings.py, creates runtime.txt, collects static
 echo creates a .gitlab-ci.yml \(gitlab pipeline\) file in your project directory
 echo creates a requirements.txt file in your project directory
 echo creates a new gitlab repository and commits your project to main
-echo sets local ENV to DEVELOPMENT
 echo gets the runner token for the new repository from gitlab
 echo creates ssh keys on remote server
 echo downloads and installs dokku on remote server
@@ -328,9 +327,6 @@ git remote add origin git@$gitlab_domain:$username/$appname.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
-
-echo setting local env to DEVELOPMENT
-export ENV=DEVELOPMENT
 
 echo getting gitlab runner token
 #https://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools
