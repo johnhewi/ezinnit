@@ -1,5 +1,4 @@
 # ezinnit
-
 ezinnit automatically deploys a new app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
 
@@ -7,27 +6,22 @@ After running ezinnit, your app is hosted on your server, running in a docker co
 
 There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
 
+ezinnit was created by John Hewitt for https://synctivate.com 
 
-ezinnit was created by John Hewitt for https://synctivate.com
+ezinnit runs on the command line in the root directory of your project.
 
-### download ezinnit into your project directory:
-```bash
-wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit
-```
+### set local env to development, download and run ezinnit
+ezinnit runs on the command line in the root directory of your project.
 
-### run ezinnit:
-```bash
-bash ezinnit
-```
-
-### set your local ENV (enables django debug mode in local environment)
 ```bash
 export ENV=DEVELOPMENT
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit
+bash ezinnit
 ```
 
 ### (optional) download ezinnit.config template:
 ```bash
-wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit.config
 ```
 
 ### you will need:
