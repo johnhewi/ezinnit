@@ -147,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 echo writing views.py
 echo "from django.shortcuts import render
 def home_page(request):
-    return render(request, 'home.html')" > $appname/view.py
+    return render(request, 'home.html')" > $appname/views.py
 
 echo "<html lang=\"en\">
 <head id=\"header\">
