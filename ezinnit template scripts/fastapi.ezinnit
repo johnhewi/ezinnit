@@ -3,7 +3,7 @@ source ezinnit.config
 echo installing uvicorn
 pip install uvicorn
 
-ech0 creating procfile for fastAPI app
+echo creating procfile for fastAPI app
 echo "web: gunicorn -k uvicorn.workers.UvicornWorker main:app" > Procfile
 echo overwriting main.py
 echo "from fastapi import FastAPI
