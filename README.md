@@ -1,8 +1,4 @@
-
-
-<p align="center" style="font-size: xxx-large">
-ezinnit
-</p>
+# ezinnit
 
 ezinnit automatically deploys a new app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
@@ -14,27 +10,27 @@ There are additional features for initializing a completely new [flask](https://
 
 ezinnit was created by John Hewitt for https://synctivate.com
 
-### <center>download ezinnit into your project directory:</center>
+### download ezinnit into your project directory:
 ```bash
 wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit
 ```
 
-### <center>run ezinnit:</center>
+### run ezinnit:
 ```bash
 bash ezinnit
 ```
 
-### <center>set your local ENV (enables django debug mode in local environment)
+### set your local ENV (enables django debug mode in local environment)
 ```bash
 export ENV=DEVELOPMENT
 ```
 
-### <center>(optional) download ezinnit.config template:</center>
+### (optional) download ezinnit.config template:
 ```bash
 wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 ```
 
-### <center>you will need:</center>
+### you will need:
 * a python 3 virtual environment containing your app
 * your [gitlab](https://gitlab.com) username
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`. If you are using a self-hosted gitlab instance, then the gitlab domain might be something like `git.mydomain.com`)
