@@ -120,7 +120,7 @@ then
   echo getting ezinnit fastapi template script
   wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/fastapi.ezinnit
   echo running ezinnit fastapi template script
-  bash fastpi.ezinnit
+  bash fastapi.ezinnit
 elif [ "$app_type" = "django" ]
 then
   echo getting django template from ezinnit
