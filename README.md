@@ -1,6 +1,6 @@
 
 
-<p align="center" style="font-size: 50px">
+<p align="center" style="font-size: xxx-large">
 ezinnit
 </p>
 
