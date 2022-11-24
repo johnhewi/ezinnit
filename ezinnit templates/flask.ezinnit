@@ -1,0 +1,67 @@
+#!/bin/sh
+
+echo creating procfile for flask app
+echo "web: gunicorn app:app" > Procfile
+
+echo writing app.py
+echo "from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_world():  # put application's code here
+    return render_template('index.html')
+
+
+if __name__ == '__main__':
+    app.run()" > app.py
+
+echo writing templates/index.html
+echo "<html lang=\"en\">
+<head id=\"header\">
+    <link rel=\"icon\" sizes=\"192x192\" href=\"https://static.wixstatic.com/media/cfcada_41bcde5a123641a195538447b161ca9a%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/cfcada_41bcde5a123641a195538447b161ca9a%7Emv2.png\">
+    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Josefin+Sans:wght@600&family=Oswald&family=Playfair+Display&display=swap\" rel=\"stylesheet\">
+</head>
+    <title> ezinnit </title>
+<body id=\"body\" class=\"body\" align=\"center\" onload=\"build_list()\" style=\"background-color:#6b9adb;\">
+<div class=\"maincolumn\">
+    <br><br><br><br>
+    <div class = \"box\">
+<br>
+    <h1 style=\"margin:10px; color: #0F386A; font-family: 'Playfair Display', serif; font-weight: bolder; font-size: 50px;\"> $appname. </h1>
+        <div class=\"content\">Deployed with a little help from <a href=\"https://github.com/johnsyncs/ezinnit\">ezinnit</a><br><br><br>by</div>
+        <br><a href=\"https://synctivate.com\"><img src=\"https://static.wixstatic.com/media/a6cc10_c03f7d758f454fc19bf82dfccf6fd647~mv2.png/v1/fill/w_221,h_57,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/translogo.png\"></a>
+    <br><br>
+    </div>
+    <br><br>
+</div>
+</div>
+</body>
+<style>
+    .content{
+        margin: 10px;
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+    }
+    .body{
+        font-family: 'Playfair Display', serif;
+        background-size: cover;
+        background-image: linear-gradient(#3C9E90, #3A5A98);
+    }
+   .maincolumn{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+        align-self: center;
+        background-color: white;
+        width: 500px;
+        border-radius: 25px;
+        opacity: 92%;
+        font-family: Galvji;
+    }
+</style>
+</html>" > templates/index.html

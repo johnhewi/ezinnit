@@ -149,6 +149,7 @@ echo "from django.shortcuts import render
 def home_page(request):
     return render(request, 'home.html')" > $appname/views.py
 
+echo writing templates/home.html
 echo "<html lang=\"en\">
 <head id=\"header\">
     <link rel=\"icon\" sizes=\"192x192\" href=\"https://static.wixstatic.com/media/cfcada_41bcde5a123641a195538447b161ca9a%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/cfcada_41bcde5a123641a195538447b161ca9a%7Emv2.png\">
@@ -161,7 +162,7 @@ echo "<html lang=\"en\">
     <div class = \"box\">
 <br>
     <h1 style=\"margin:10px; color: #0F386A; font-family: 'Playfair Display', serif; font-weight: bolder; font-size: 50px;\"> $appname. </h1>
-        <div class=\"content\">Made with help from <a href=\"https://github.com/johnsyncs/ezinnit\">ezinnit.</a></div>
+        <div class=\"content\">Deployed with a little help from <a href=\"https://github.com/johnsyncs/ezinnit\">ezinnit</a><br><br><br>by</div>
         <br><a href=\"https://synctivate.com\"><img src=\"https://static.wixstatic.com/media/a6cc10_c03f7d758f454fc19bf82dfccf6fd647~mv2.png/v1/fill/w_221,h_57,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/translogo.png\"></a>
     <br><br>
     </div>
