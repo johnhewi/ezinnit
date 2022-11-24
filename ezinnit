@@ -188,8 +188,9 @@ runner_token=$(curl --header "PRIVATE-TOKEN: $token" "https://$gitlab_domain/api
 python3 -c "import sys, json; print(json.load(sys.stdin)['runners_token'])")
 
 echo getting ezinnit script for server
-wget
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20deployment%20scripts/initialize-server.sh
 
+ech creating create_config file for server
 echo "
 echo \"
 username=$username
@@ -202,8 +203,7 @@ email=$email
 app_type=$app_type
 runner_token=$runner_token\" >> ezinnit.config" >> create_config.sh
 
-
-echo running initialize-server.sh on server
-
+echo running create_config on server
 ssh root@"$ip" "bash -s" < create_config
+echo running initialize-server.sh on server
 ssh root@"$ip" "bash -s" < initialize-server.sh
