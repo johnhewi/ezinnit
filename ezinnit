@@ -87,7 +87,7 @@ else
     echo app type: "$app_type"
   fi
   echo
-  read -r -p "that's ezinnit? Check settings and then hit enter to deploy"
+  read -r -p "That's ezinnit. Check settings and then press enter to deploy..."
 
   echo "username=$username
 gitlab_domain=$gitlab_domain
