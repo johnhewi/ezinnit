@@ -16,10 +16,10 @@ app = FastAPI()
 
 @app.get(\"/\")
 async def root():
-    return {\"message\": \"deployment is ezinnit https//synctivate.com\"}
+    return {\"message\": \"$appname is working. By the way, it was deployed with ezinnit from https://synctivate.com\"}
 
 
 @app.get(\"/hello/{name}\")
 async def say_hello(name: str):
-    return {\"message\": f\"Hello {name}! https//synctivate.com\"}
+    return {\"message\": f\"Hi {name}, I'm $appname! Have you heard of ezinnit from https://synctivate.com?\"}
 " > main.py

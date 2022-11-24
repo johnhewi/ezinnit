@@ -4,7 +4,8 @@ At the push of a button, your app will be live and future changes will be automa
 
 After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD): commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
 
-There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
+There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. When running locally, debug mode will be ON. \
+If you're trying to deploy an existing project, don't select an app type 
 
 ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 

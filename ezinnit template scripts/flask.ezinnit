@@ -24,7 +24,7 @@ echo "<html lang=\"en\">
     <link rel=\"icon\" sizes=\"192x192\" href=\"https://static.wixstatic.com/media/cfcada_41bcde5a123641a195538447b161ca9a%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/cfcada_41bcde5a123641a195538447b161ca9a%7Emv2.png\">
     <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Josefin+Sans:wght@600&family=Oswald&family=Playfair+Display&display=swap\" rel=\"stylesheet\">
 </head>
-    <title> ezinnit </title>
+    <title> $appname </title>
 <body id=\"body\" class=\"body\" align=\"center\" onload=\"build_list()\" style=\"background-color:#6b9adb;\">
 <div class=\"maincolumn\">
     <br><br><br><br>
