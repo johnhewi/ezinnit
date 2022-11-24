@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "
+echo \"
+username=$username
+gitlab_domain=$gitlab_domain
+token=$token
+appname=$appname
+ip=$ip
+domain=$domain
+email=$email
+app_type=$app_type
+runner_token=$runner_token\" >> ezinnit.config" >> create_config.sh
