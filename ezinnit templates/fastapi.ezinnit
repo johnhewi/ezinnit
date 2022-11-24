@@ -1,0 +1,24 @@
+#!/bin/sh
+echo installing uvicorn
+pip install uvicorn
+
+ech0 creating procfile for fastAPI app
+echo "web: gunicorn -k uvicorn.workers.UvicornWorker main:app" > Procfile
+echo overwriting main.py
+echo "from fastapi import FastAPI
+
+app = FastAPI()
+
+# deployment is ezinnit
+# www.synctivate.com
+
+
+@app.get(\"/\")
+async def root():
+    return {\"message\": \"deployment is ezinnit https//synctivate.com\"}
+
+
+@app.get(\"/hello/{name}\")
+async def say_hello(name: str):
+    return {\"message\": f\"Hello {name}! https//synctivate.com\"}
+" > main.py
