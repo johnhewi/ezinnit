@@ -204,6 +204,6 @@ app_type=$app_type
 runner_token=$runner_token\" >> ezinnit.config" >> create_config.sh
 
 echo running create_config on server
-ssh root@"$ip" "bash -s" < create_config
+ssh root@"$ip" "bash -s" < create_config.sh
 echo running initialize-server.sh on server
 ssh root@"$ip" "bash -s" < initialize-server.sh
