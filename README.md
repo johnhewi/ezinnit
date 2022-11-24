@@ -6,9 +6,9 @@ After running ezinnit, your app is hosted on your server, running in a docker co
 
 There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
 
-ezinnit was created by John Hewitt for https://synctivate.com 
+ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
-ezinnit runs on the command line in the root directory of your project.
+ezinnit was created by John Hewitt for https://synctivate.com
 
 ### set local env to development, download and run ezinnit
 ezinnit runs on the command line in the root directory of your project.
@@ -54,13 +54,13 @@ to your root directory and input the values in the file and then run the script.
 * checks for ezinnit.config, if it doesn't exist, it prompts you for the values and creates an ezinnit.config file
 * uses [toptotal](https://www.toptal.com/developers/gitignore) to create a .gitignore file in your project directory
 * installs gunicorn in local environment
-* creates a procfile in project directory if django, flask or fastApi app type is selected
-* for django apps: replaces settings.py, creates runtime.txt, collects static, migrates
+* runs template script for your app if you've selected one
 * creates a gitlab pipeline for automated deployment (.gitlab-ci.yml) in your project directory
 * creates a requirements.txt file in your project directory
-* initializes git repository, sets initial branch to main, sets remote to new gitlab repository, commits repository and pushes to gitlab
-* sets local ENV to DEVELOPMENT
+* initializes git repository, sets initial branch to main, sets remote to new gitlab repository, commits and pushes to gitlab
 * gets the runner token for the new repository from gitlab
+* copies ezinnit.config to server
+* runs initialize-server.sh script, which does the following:
 * creates ssh keys on server
 * uploads server's ssh keys to gitlab repository
 * downloads and installs dokku on server
