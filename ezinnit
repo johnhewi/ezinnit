@@ -111,8 +111,10 @@ pip install gunicorn
 
 if [ "$app_type" = "flask" ]
 then
-  echo creating procfile for flask app
-  echo "web: gunicorn app:app" > Procfile
+  echo getting ezinnit flask template script
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20templates/flask.ezinnit
+  echo running ezinnit flask template script
+  bash flask.ezinnit
 
 elif [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
 then
