@@ -1,4 +1,5 @@
 #!/bin/sh
+source ezinnit.config
 echo installing uvicorn
 pip install uvicorn
 
