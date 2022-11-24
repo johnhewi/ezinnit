@@ -61,7 +61,7 @@ else
   echo new server\'s ip address
   read -r ip
 
-  echo enter domain for new app \(\"mynewapp.mydomain.com\"\)
+  echo enter domain for new app \(\"mynewapp.mydomain.com\" Create DNS \"A\" record now before continuing for best results.\)
   read -r domain
 
   echo enter email for letsencrypt.org
