@@ -112,19 +112,19 @@ pip install gunicorn
 if [ "$app_type" = "flask" ]
 then
   echo getting ezinnit flask template script
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20templates/flask.ezinnit
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/flask.ezinnit
   echo running ezinnit flask template script
   bash flask.ezinnit
 elif [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
 then
   echo getting ezinnit fastapi template script
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20templates/fastapi.ezinnit
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/fastapi.ezinnit
   echo running ezinnit fastapi template script
   bash fastpi.ezinnit
 elif [ "$app_type" = "django" ]
 then
   echo getting django template from ezinnit
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20templates/django.ezinnit
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.ezinnit
   echo running django template script
   bash django.ezinnit
 elif [ "$app_type" = "ezinnit" ]
