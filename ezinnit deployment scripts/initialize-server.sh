@@ -25,15 +25,6 @@ dokku domains:set $appname $domain
 echo setting proxy port to 80
 dokku proxy:ports-set $appname http:80:5000
 
-
-echo installing letsencrypt from letsencrypt.org
-sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
-echo setting letsencrypt email
-dokku config:set --no-restart $appname DOKKU_LETSENCRYPT_EMAIL=$email
-echo enabling letsencrypt for app
-dokku letsencrypt:enable $appname
-echo enabling letsencrypt cron job for renewing certificate
-dokku letsencrypt:cron-job --add
 echo installing gitlab runner from gitlab-runner-downloads.s3.amazonaws.com
 # Download the binary for your system
 sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
@@ -65,6 +56,15 @@ sudo gitlab-runner register \
   --locked="false" \
   --access-level="not_protected"
 
+echo installing letsencrypt from letsencrypt.org
+sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+echo setting letsencrypt email
+dokku config:set --no-restart $appname DOKKU_LETSENCRYPT_EMAIL=$email
+echo enabling letsencrypt for app
+dokku letsencrypt:enable $appname
+echo enabling letsencrypt cron job for renewing certificate
+dokku letsencrypt:cron-job --add
+echo saved as server-script.sh in project directory where ezinnit was run
 echo
 echo gitlab now deploying https://$gitlab_domain/$username/$appname
 echo to https://$domain
