@@ -29,7 +29,7 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 * a python 3 virtual environment containing your app
 * your [gitlab](https://gitlab.com) username
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`. If you are using a self-hosted gitlab instance, then the gitlab domain might be something like `git.mydomain.com`)
-* your [gitlab personal access token](tutorial/get_personal_access_token.md)
+* your [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
 * your local machine's ssh key registered on gitlab
 * your local machine's ssh key registered on your new server (digital ocean sets this up automatically, see [tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * your server ip address (new droplet running Ubuntu 20.04) [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
@@ -38,7 +38,7 @@ wget https://raw.githubusercontent.com/johnhewi/ezinnit/main/ezinnit.config
 * the name of the app you wish to create on the server, for example, `mynewapp`. This will also become the name of the project on gitlab. (This MUST match the django project name if app type is django!)
 * email address to use for registering with [letsencrypt](https://letsencrypt.org/)
 * the type of the app: either flask, django, fastApi or just deploy the environment as is
-* this script was originally designed to replace the steps in [this tutorial](tutorial/tutorials/deployment_tutorial.md)
+* this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
 ### warning!
 * if you select an app type, ezinnit will write over files, including your procfile, settings.py, main.py etc.
 * app selection is only for use in initializing a brand new flask, django or fastApi app
