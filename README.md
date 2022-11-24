@@ -4,7 +4,7 @@ At the push of a button, your app will be live and future changes will be automa
 
 After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD): commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
 
-There are some additional features for NEW flask, django and fastApi apps. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
+There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten to create a basic, functioning template. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. Thus when running locally, debug mode will be ON. When app type is django, the settings.py file will be overwritten. When app type is fastApi, the main.py file will be overwritten.  
 
 
 ezinnit was created by John Hewitt for https://synctivate.com
@@ -61,16 +61,16 @@ to your root directory and input the values in the file and then run the script.
 * initializes git repository, sets initial branch to main, sets remote to new gitlab repository, commits repository and pushes to gitlab
 * sets local ENV to DEVELOPMENT
 * gets the runner token for the new repository from gitlab
-* creates ssh keys on remote server
+* creates ssh keys on server
 * uploads server's ssh keys to gitlab repository
-* downloads and installs dokku on remote server
-* creates dokku app on remote server
-* sets the domain for the dokku app on remote server
-* sets the apps port to 80:5000 on remote server
-* downloads and creates a gitlab runner on remote server
-* registers the gitlab runner on remote server
-* downloads and installs [dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt)
-* enables encryption for app with TLS certificate from [letsencrypt](https://letsencrypt.org/)
-* adds a chron job to automatically renew TLS certificates
+* downloads and installs dokku on server
+* creates dokku app on server
+* sets the domain for the dokku app on server
+* sets the apps port to 80:5000 on server
+* downloads and creates a gitlab runner on server
+* registers the gitlab runner on server
+* downloads and installs [dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt) on server
+* enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
+* adds a chron job on server to automatically renew TLS certificates
 
 
