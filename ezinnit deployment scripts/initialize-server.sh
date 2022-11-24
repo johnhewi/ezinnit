@@ -3,13 +3,13 @@
 source ezinnit.config
 ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa
 
-ssh_key=\`cat /root/.ssh/id_rsa\`
-echo ssh key: \$ssh_key
+ssh_key=`cat /root/.ssh/id_rsa`
+echo ssh key: $ssh_key
 
 echo adding ssh key to gitlab
 curl --request POST --header "PRIVATE-TOKEN: $token" \
     "https://$gitlab_domain/api/v4/projects/$username%2F$appname/variables" \
-    --form "key=SSH_PRIVATE_KEY" --form "value=\$ssh_key"
+    --form "key=SSH_PRIVATE_KEY" --form "value=$ssh_key"
 
 echo installing dokku
 wget https://raw.githubusercontent.com/dokku/dokku/v0.28.4/bootstrap.sh
