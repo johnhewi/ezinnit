@@ -115,33 +115,12 @@ then
   wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20templates/flask.ezinnit
   echo running ezinnit flask template script
   bash flask.ezinnit
-
 elif [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
 then
-echo creating procfile for fastAPI app
-  echo installing uvicorn
-  pip install uvicorn
-
-  ech0 creating procfile for fastAPI app
-  echo "web: gunicorn -k uvicorn.workers.UvicornWorker main:app" > Procfile
-  echo overwriting main.py
-  echo "from fastapi import FastAPI
-
-app = FastAPI()
-
-# deployment is ezinnit
-# www.synctivate.com
-
-
-@app.get(\"/\")
-async def root():
-    return {\"message\": \"deployment is ezinnit https//synctivate.com\"}
-
-
-@app.get(\"/hello/{name}\")
-async def say_hello(name: str):
-    return {\"message\": f\"Hello {name}! https//synctivate.com\"}
-" > main.py
+  echo getting ezinnit fastapi template script
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20templates/fastapi.ezinnit
+  echo running ezinnit fastapi template script
+  bash fastpi.ezinnit
 elif [ "$app_type" = "django" ]
 then
   echo getting django template from ezinnit
