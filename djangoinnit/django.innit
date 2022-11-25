@@ -1,0 +1,17 @@
+#!/bin/dash
+
+echo enter app name:
+read -r app_name
+[ -d /templates ] \
+&& echo "templates directory exists" \
+|| echo "creating templates folder..." \
+&& mkdir templates
+(python3 -m venv "venv" \
+&& source "venv"/bin/activate \
+&& pip install django \
+&& django-admin startproject "$app_name" \
+&& export ENV=DEVELOPMENT \
+&& mkdir ezinnit \
+&& [ -d "/templates" ] && echo \
+&& wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
+&& bash ezinnit/ezinnit)
