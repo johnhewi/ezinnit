@@ -72,8 +72,7 @@ else
   read -r app_type
   echo
   echo
-  echo
-  echo entered information:
+  echo Is everything correct?
   echo
   echo gitlab username: "$username"
   echo gitlab domain: "$gitlab_domain"
