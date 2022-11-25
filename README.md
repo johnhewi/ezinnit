@@ -1,8 +1,33 @@
-# ezinnit
+# <p align="center">ezinnit
+#### <p align="center">Easily Initialize Continuous Integration and Continuous Deployment</p>
+Continuous integration means that from the moment you begin your project, 
+commits to main should be automatically deployed. 
+Continuous deployment means that from the moment you begin your project, 
+you should have a live build of your app in a container on a remote server 
+with a secure public connection. 
 
-Continuous integration means that from the moment you begin your project, you should have a build of your app running in a container on a remote server with a secure, live connection. Continuous deployment means that from the moment you begin your project, commits to main are automatically deployed.
 
-ezinnit automatically deploys a new app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
+### To set local env to development, download and run ezinnit:
+```bash
+export ENV=DEVELOPMENT
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit
+bash ezinnit
+```
+ezinnit runs on the command line in the root directory of your project.
+
+<br>
+
+#### If there is no ezinni.config file, you will be prompted for:
+1. gitlab username
+2. gitlab_domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
+3. [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
+4. app name (becomes your gitlab repository name)
+5. ip address of your remote server
+6. the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
+7. email address to use for registering with [letsencrypt](https://letsencrypt.org/)
+8. optional app type for additional initialization templates, django, flask or fastApi
+
+ezinnit deploys an app in a python environment to a docker container using [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
 
 After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
@@ -12,24 +37,12 @@ If you're trying to deploy an existing project, don't select an app type
 
 ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
-
-
-
-### set local env to development, download and run ezinnit
-ezinnit runs on the command line in the root directory of your project.
-
-```bash
-export ENV=DEVELOPMENT
-wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit
-bash ezinnit
-```
-
-### (optional) download ezinnit.config template:
+#### to download an ezinnit.config file to use in place of entering prompts:
 ```bash
 wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit.config
 ```
 
-### you will need:
+### requirements:
 * a python 3 virtual environment containing your app
 * your [gitlab](https://gitlab.com) username
 * your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`. If you are using a self-hosted gitlab instance, then the gitlab domain might be something like `git.mydomain.com`)
@@ -42,7 +55,7 @@ wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit.config
 * the name of the app you wish to create on the server, for example, `mynewapp`. This will also become the name of the project on gitlab. (This MUST match the django project name if app type is django!)
 * email address to use for registering with [letsencrypt](https://letsencrypt.org/)
 * the type of the app: either flask, django, fastApi or just deploy the environment as is
-* this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
+* this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md), which 
 ### warning!
 * if you select an app type, ezinnit will write over files, including your procfile, settings.py, main.py etc.
 * app selection is only for use in initializing a brand new flask, django or fastApi app
@@ -81,7 +94,7 @@ to your root directory and input the values in the file and then run the script.
 
 ### Synctivate
 Custom Software
-[synctivate.com](https://synctivate.com)
+<br>[synctivate.com](https:synctivate.com)
 
 [John Hewitt](https://github.com/johnhewi) 
-[Robert Carrol](https://github.com/robswc)
+<br>[Robert Carrol](https://github.com/robswc)
