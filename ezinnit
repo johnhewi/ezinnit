@@ -163,6 +163,7 @@ git add .
 git commit -m "Initial commit"
 git push -u origin main
 
+
 echo getting gitlab runner token
 #https://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools
 runner_token=$(curl --header "PRIVATE-TOKEN: $token" "https://$gitlab_domain/api/v4/projects/$username%2F$appname" | \
