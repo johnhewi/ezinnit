@@ -1,12 +1,16 @@
 # <p align="center">ezinnit
-#### <p align="center">Easily Initialize Continuous Integration and Continuous Deployment</p>
+### <p align="center">Easily Initialize Continuous Integration and Continuous Deployment</p>
 Continuous integration means that from the moment you begin your project, 
 commits to main should be automatically deployed. 
 Continuous deployment means that from the moment you begin your project, 
 you should have a live build of your app in a container on a remote server 
 with a secure public connection. 
 
-<br>This script initializes your gitlab repository and installs dokku on your server. Your gitlab repository and dokku are configured to automatically deploy any commits to your main branch and securely serve them at your domain.
+<br>This script initializes your gitlab repository and installs dokku on your server. 
+Your gitlab repository and dokku are configured to 
+automatically deploy any commits to your main branch
+to your server, where your app is automatically built in a container
+and securely served  at your domain.
 
 
 ### To set local env to development, download and run ezinnit:
@@ -67,7 +71,7 @@ bash ezinnit/ezinnit
 * enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
 * adds a chron job on server to automatically renew TLS certificates
 
-## start your project with ezinnit for CI/CD 
+### start your project with ezinnit for CI/CD 
 
 ezinnit deploys an app in a python environment to a docker container using [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
