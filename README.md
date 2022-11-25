@@ -6,6 +6,8 @@ Continuous deployment means that from the moment you begin your project,
 you should have a live build of your app in a container on a remote server 
 with a secure public connection. 
 
+<br>This script initializes your gitlab repository and installs dokku on your server. Your gitlab repository and dokku are configured to automatically deploy any commits to your main branch and securely serve them at your domain.
+
 
 ### To set local env to development, download and run ezinnit:
 ```bash
@@ -18,7 +20,7 @@ ezinnit runs on the command line in the root directory of your project.
 
 <br>
 
-#### If there is no ezinni.config file, you will be prompted for:
+#### If there is no ezinnit.config file, you will be prompted for:
 1. gitlab username
 2. gitlab_domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
 3. [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
@@ -31,7 +33,7 @@ ezinnit runs on the command line in the root directory of your project.
 ezinnit deploys an app in a python environment to a docker container using [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
 
-After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
+After running ezinnit, a docker container on your server is securely (https) serving your app to your specified domain, `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
 
 There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. When running locally, debug mode will be ON. \
 If you're trying to deploy an existing project, don't select an app type 
@@ -45,19 +47,13 @@ wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit.config
 
 ### requirements:
 * a python 3 virtual environment containing your app
-* your [gitlab](https://gitlab.com) username
-* your gitlab account domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`. If you are using a self-hosted gitlab instance, then the gitlab domain might be something like `git.mydomain.com`)
-* your [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
 * your local machine's ssh key registered on gitlab
-* your local machine's ssh key registered on your new server (digital ocean sets this up automatically, see [tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
-* your server ip address (new droplet running Ubuntu 20.04) [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
-* the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
-* a DNS \"A\" record pointing your subdomain.domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
-* the name of the app you wish to create on the server, for example, `mynewapp`. This will also become the name of the project on gitlab. (This MUST match the django project name if app type is django!)
-* email address to use for registering with [letsencrypt](https://letsencrypt.org/)
-* the type of the app: either flask, django, fastApi or just deploy the environment as is
-* this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md), which 
+* your local machine's ssh key registered on your new server ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
+* a new server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
+* for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
+* this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
 ### warning!
+* this script creates new ssh keys on the remote server!
 * if you select an app type, ezinnit will write over files, including your procfile, settings.py, main.py etc.
 * app selection is only for use in initializing a brand new flask, django or fastApi app
 * if you want to deploy your environment as is, just hit enter when prompted for app type
@@ -82,7 +78,7 @@ to your root directory and input the values in the file and then run the script.
 * runs server initialization script on the remote server, which does the following:
 * creates ssh keys on server
 * uploads server's ssh keys to gitlab repository
-* downloads and installs dokku on server
+* downloads and installs [dokku](https://dokku.com/) on server
 * creates dokku app on server
 * sets the domain for the dokku app on server
 * sets the apps port to 80:5000 on server
