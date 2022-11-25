@@ -70,9 +70,11 @@ else
   echo WARNING: if you select an app, ezinnit will write over your procfile, settings.py, main.py etc.
   echo enter app type \(type flask, django, fastApi, or just hit enter to deploy your environment as is\)
   read -r app_type
-
-
+  echo
+  echo
+  echo
   echo entered information:
+  echo
   echo gitlab username: "$username"
   echo gitlab domain: "$gitlab_domain"
   echo gitlab personal token: "$token"
