@@ -16,7 +16,10 @@ echo "creating virtual environment..."
 && mkdir ezinnit \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
 && bash ezinnit/ezinnit))
-echo
-echo
-echo now run the following commands to enable DEBUG \in your LOCAL environment variable:
-echo export ENV=DEVELOPMENT
+echo starting local virtual environment...
+source venv/bin/activate
+echo enabling local debug mode...
+export ENV=DEVELOPMENT
+echo starting django app...
+cd athena
+python manage.py runserver
