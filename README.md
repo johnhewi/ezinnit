@@ -1,15 +1,24 @@
 # ezinnit
+
+Continuous integration means that from the moment you begin your project, you should have a build of your app running in a container on a remote server with a secure, live connection. Continuous deployment means that from the moment you begin your project, commits to main are automatically deployed.
+
 ezinnit automatically deploys a new app with [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
 
-After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD): commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
+After running ezinnit, your app is hosted on your server, running in a docker container and live at `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
 
 There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. When running locally, debug mode will be ON. \
 If you're trying to deploy an existing project, don't select an app type 
 
 ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
-ezinnit was created by John Hewitt for https://synctivate.com
+###Synctivate
+####Custom Software
+####[synctivate.com](https://synctivate.com)
+
+[John Hewitt](https://github.com/johnhewi) 
+[Robert Carrol](https://github.com/robswc)
+
 
 ### set local env to development, download and run ezinnit
 ezinnit runs on the command line in the root directory of your project.
@@ -55,13 +64,13 @@ to your root directory and input the values in the file and then run the script.
 * checks for ezinnit.config, if it doesn't exist, it prompts you for the values and creates an ezinnit.config file
 * uses [toptotal](https://www.toptal.com/developers/gitignore) to create a .gitignore file in your project directory
 * installs gunicorn in local environment
-* runs template script for your app if you've selected one
+* runs template script for your platform if you've selected one
 * creates a gitlab pipeline for automated deployment (.gitlab-ci.yml) in your project directory
 * creates a requirements.txt file in your project directory
 * initializes git repository, sets initial branch to main, sets remote to new gitlab repository, commits and pushes to gitlab
 * gets the runner token for the new repository from gitlab
 * copies ezinnit.config to server
-* runs initialize-server.sh script, which does the following:
+* runs server initialization script on the remote server, which does the following:
 * creates ssh keys on server
 * uploads server's ssh keys to gitlab repository
 * downloads and installs dokku on server
