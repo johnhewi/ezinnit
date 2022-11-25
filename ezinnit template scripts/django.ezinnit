@@ -149,9 +149,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 " > "$appname"/settings.py
 
 echo writing views.py
-echo "from django.shortcuts import render
+echo "import os
+from django.shortcuts import render
 def home_page(request):
-    return render(request, 'home.html')" > $appname/views.py
+    context = {'ENV': os.getenv('ENV')}
+    return render(request, 'home.html', context)" > $appname/views.py
 
 echo writing templates/home.html
 echo "<html lang=\"en\">
@@ -164,6 +166,9 @@ echo "<html lang=\"en\">
 <div class=\"maincolumn\">
    <div class = \"box\">
    <div style=\"margin:20px; color: #0F386A; font-family: 'Playfair Display', serif; font-weight: bolder; font-size: 80px;\"> $appname. </div>
+       {% if ENV == \"DEVELOPMENT\" %}
+       <div style=\"margin:20px; color: #FF423E; font-family: 'Playfair Display', serif; font-weight: bolder; font-size: 80px;\"> DEBUG MODE </div>
+       {% endif %}
        <div class=\"content\">Deployed with a little help from <a href=\"https://github.com/johnsyncs/ezinnit\">ezinnit</div>
        <div class=\"content\"> <br><a href=\"https://synctivate.com\"><img src=\"https://static.wixstatic.com/media/a6cc10_c03f7d758f454fc19bf82dfccf6fd647~mv2.png/v1/fill/w_221,h_57,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/translogo.png\"></a></div>
    </div>
