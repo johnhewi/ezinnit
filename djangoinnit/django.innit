@@ -18,5 +18,5 @@ echo "creating virtual environment..."
 && bash ezinnit/ezinnit))
 echo
 echo starting local dev environment \in debug mode...
-source venv/bin/activate && export ENV=DEVELOPMENT && cd $app_name && python manage.py runserver
+source venv/bin/activate && export ENV=DEVELOPMENT && cd $app_name && python manage.py runserver 8013
 
