@@ -6,7 +6,9 @@ read -r app_name
 && echo "templates directory exists" \
 || echo "creating templates folder..." \
 && mkdir templates
+echo "creating virtual environment..."
 (python3 -m venv "venv" \
+&& echo "activating virtual environment..." \
 && source "venv"/bin/activate \
 && echo installing django... \
 && pip install django \
