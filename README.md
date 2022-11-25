@@ -10,8 +10,9 @@ with a secure public connection.
 ### To set local env to development, download and run ezinnit:
 ```bash
 export ENV=DEVELOPMENT
-wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit
-bash ezinnit
+mkdir ezinnit
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
+bash ezinnit/ezinnit
 ```
 ezinnit runs on the command line in the root directory of your project.
 

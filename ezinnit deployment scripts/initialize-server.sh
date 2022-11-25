@@ -1,6 +1,6 @@
 #! /bin/sh
 # shellcheck disable=SC1079
-source ezinnit.config
+source ezinnit/ezinnit.config
 ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa
 
 ssh_key=`cat /root/.ssh/id_rsa`
@@ -66,8 +66,3 @@ echo enabling letsencrypt cron job for renewing certificate
 dokku letsencrypt:cron-job --add
 echo saved as server-script.sh in project directory where ezinnit was run
 echo
-echo gitlab now deploying https://$gitlab_domain/$username/$appname
-echo to https://$domain
-echo
-echo that\'s ezinnit!
-echo https://synctivate.com

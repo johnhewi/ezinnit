@@ -9,7 +9,7 @@ echo checks for ezinnit.config, if it doesn\'t exist, it prompts you for the val
 echo uses toptotal to create a .gitignore file in your project directory
 echo installs gunicorn in local environment
 echo creates a procfile for your app in project directory
-echo for django apps: replaces settings.py, creates runtime.txt, collects static, migrates
+echo runs optional app creation templates for your app
 echo creates a .gitlab-ci.yml \(gitlab pipeline\) file in your project directory
 echo creates a requirements.txt file in your project directory
 echo creates a new gitlab repository and commits your project to main
@@ -34,7 +34,7 @@ echo
 
 app_type="ezinnit"
 
-if [ -f ezinnit.config ]
+if [ -f ezinnit/ezinnit.config ]
 then
   echo config file found...
   # shellcheck disable=SC2039
@@ -96,7 +96,7 @@ appname=$appname
 ip=$ip
 domain=$domain
 email=$email
-app_type=$app_type" >> ezinnit.config
+app_type=$app_type" >> ezinnit/ezinnit.config
 fi
 
 echo creating gitignore from www.toptotal.com/developers/gitignore
@@ -112,21 +112,27 @@ pip install gunicorn
 if [ "$app_type" = "flask" ]
 then
   echo getting ezinnit flask template script
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/flask.ezinnit
+  mkdir ezinnit/platform_templates
+  mkdir ezinnit/platform_templates/flask
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/flask.ezinnit - P ezinnit/platform_templates/flask
   echo running ezinnit flask template script
-  bash flask.ezinnit
+  bash ezinnit/platform_templates/flask/flask.ezinnit
 elif [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
 then
   echo getting ezinnit fastapi template script
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/fastapi.ezinnit
+  mkdir ezinnit/platform_templates
+  mkdir ezinnit/platform_templates/fastapi
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/fastapi.ezinnit - P ezinnit/platform_templates/fastapi
   echo running ezinnit fastapi template script
-  bash fastapi.ezinnit
+  bash ezinnit/platform_templates/fastapi/fastapi.ezinnit
 elif [ "$app_type" = "django" ]
 then
   echo getting django template from ezinnit
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.ezinnit
+  mkdir ezinnit/platform_templates
+  mkdir ezinnit/platform_templates/django
+  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.ezinnit - P ezinnit/platform_templates/django
   echo running django template script
-  bash django.ezinnit
+  bash ezinnit/platform_templates/django/django.ezinnit
 elif [ "$app_type" = "ezinnit" ]
 then
   echo deploying...
@@ -170,10 +176,13 @@ runner_token=$(curl --header "PRIVATE-TOKEN: $token" "https://$gitlab_domain/api
 python3 -c "import sys, json; print(json.load(sys.stdin)['runners_token'])")
 
 echo getting ezinnit script for server
-wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20deployment%20scripts/initialize-server.sh
+mkdir ezinnit/deployment
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20deployment%20scripts/initialize-server.sh - P ezinnit/deployment
 
 ech creating create_config file for server
 echo "
+#!/bin/bash
+mkdir ezinnit
 echo \"
 username=$username
 gitlab_domain=$gitlab_domain
@@ -183,11 +192,21 @@ ip=$ip
 domain=$domain
 email=$email
 app_type=$app_type
-runner_token=$runner_token\" >> ezinnit.config" >> create_config.sh
+runner_token=$runner_token\" >> ezinnit/ezinnit.config" >> ezinnit/deployment/create_config.sh
 
 echo running create_config on server
-ssh root@"$ip" "bash -s" < create_config.sh
+ssh root@"$ip" "bash -s" < ezinnit/deployment/create_config.sh
 echo running initialize-server.sh on server
-ssh root@"$ip" "bash -s" < initialize-server.sh
+ssh root@"$ip" "bash -s" < ezinnit/deployment/initialize-server.sh
 wait
-echo TESTING TESTING 123
+git add .
+git commit -m "commit ezinnit"
+git push -u origin main
+echo gitlab now deploying gitlab repository
+echo
+echo https://$gitlab_domain/$username/$appname
+echo
+echo https://$domain
+echo
+echo that\'s ezinnit!
+echo https://synctivate.com
