@@ -189,3 +189,5 @@ echo running create_config on server
 ssh root@"$ip" "bash -s" < create_config.sh
 echo running initialize-server.sh on server
 ssh root@"$ip" "bash -s" < initialize-server.sh
+wait
+echo TESTING TESTING 123
