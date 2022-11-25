@@ -38,7 +38,7 @@ if [ -f ezinnit/ezinnit.config ]
 then
   echo config file found...
   # shellcheck disable=SC2039
-  source ezinnit.config
+  source ezinnit/ezinnit.config
 
 else
   echo no config file found, prompting for variables
@@ -88,8 +88,8 @@ else
   fi
   echo
   read -r -p "Check the above settings and then press enter to deploy..."
-
-  echo "username=$username
+fi
+echo "username=$username
 gitlab_domain=$gitlab_domain
 token=$token
 appname=$appname
@@ -97,7 +97,6 @@ ip=$ip
 domain=$domain
 email=$email
 app_type=$app_type" >> ezinnit/ezinnit.config
-fi
 
 echo creating gitignore from www.toptotal.com/developers/gitignore
 echo "function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ ;}" >> \
@@ -113,8 +112,10 @@ if [ "$app_type" = "flask" ]
 then
   echo getting ezinnit flask template script
   mkdir ezinnit/platform_templates
+  wait
   mkdir ezinnit/platform_templates/flask
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/flask.ezinnit - P ezinnit/platform_templates/flask
+  wait
+  wget -P ezinnit/platform_templates/flask https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/flask.ezinnit
   echo running ezinnit flask template script
   bash ezinnit/platform_templates/flask/flask.ezinnit
 elif [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
@@ -122,7 +123,7 @@ then
   echo getting ezinnit fastapi template script
   mkdir ezinnit/platform_templates
   mkdir ezinnit/platform_templates/fastapi
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/fastapi.ezinnit - P ezinnit/platform_templates/fastapi
+  wget -P ezinnit/platform_templates/fastapi https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/fastapi.ezinnit
   echo running ezinnit fastapi template script
   bash ezinnit/platform_templates/fastapi/fastapi.ezinnit
 elif [ "$app_type" = "django" ]
@@ -130,7 +131,7 @@ then
   echo getting django template from ezinnit
   mkdir ezinnit/platform_templates
   mkdir ezinnit/platform_templates/django
-  wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.ezinnit - P ezinnit/platform_templates/django
+  wget -P ezinnit/platform_templates/django https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.ezinnit
   echo running django template script
   bash ezinnit/platform_templates/django/django.ezinnit
 elif [ "$app_type" = "ezinnit" ]
@@ -177,11 +178,10 @@ python3 -c "import sys, json; print(json.load(sys.stdin)['runners_token'])")
 
 echo getting ezinnit script for server
 mkdir ezinnit/deployment
-wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20deployment%20scripts/initialize-server.sh - P ezinnit/deployment
+wget -P ezinnit/deployment https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20deployment%20scripts/initialize-server.sh
 
 ech creating create_config file for server
 echo "
-#!/bin/bash
 mkdir ezinnit
 echo \"
 username=$username
