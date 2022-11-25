@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 echo enter app name:
 read -r app_name
@@ -8,10 +8,15 @@ read -r app_name
 && mkdir templates
 (python3 -m venv "venv" \
 && source "venv"/bin/activate \
+&& echo installing django... \
 && pip install django \
+&& echo starting django project... \
 && django-admin startproject "$app_name" \
 && export ENV=DEVELOPMENT \
+&& ( cd "$app_name" \
+&& echo starting ezinnit... \
 && mkdir ezinnit \
-&& [ -d "/templates" ] && echo \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
-&& bash ezinnit/ezinnit)
+&& bash ezinnit/ezinnit))
+echo run the following command to set your environment variable:
+echo export ENV=DEVELOPMENT
