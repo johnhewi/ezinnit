@@ -16,10 +16,7 @@ echo "creating virtual environment..."
 && mkdir ezinnit \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
 && bash ezinnit/ezinnit))
-echo starting local virtual environment...
-source venv/bin/activate
-echo enabling local debug mode...
-export ENV=DEVELOPMENT
-echo starting django app...
-cd athena
-python manage.py runserver
+echo
+echo starting local dev environment \in debug mode...
+source venv/bin/activate && export ENV=DEVELOPMENT && cd hera && python manage.py runserver
+
