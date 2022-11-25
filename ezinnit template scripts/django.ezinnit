@@ -1,5 +1,9 @@
 #!/bin/sh
 source ezinnit/ezinnit.config
+[ -d /templates ] \
+&& echo "templates directory exists" \
+|| echo "creating templates folder..." \
+&& mkdir templates
 echo creating procfile for django app
 echo "web: gunicorn $appname.wsgi" > Procfile
 echo creating runtime.txt
