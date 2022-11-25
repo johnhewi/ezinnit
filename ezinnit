@@ -213,7 +213,7 @@ echo your domain:
 echo https://"$domain"
 echo
 echo your server ip:
-echo https://"$ip"
+echo http://"$ip"
 echo
 echo that\'s ezinnit!
 echo https://synctivate.com
