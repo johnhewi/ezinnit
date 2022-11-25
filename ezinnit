@@ -208,7 +208,7 @@ echo https://"$gitlab_domain"/$username/$appname
 echo
 echo https://"$domain"
 echo
-echo "$ip"
+echo https://"$ip"
 echo
 echo that\'s ezinnit!
 echo https://synctivate.com
