@@ -12,12 +12,7 @@ If you're trying to deploy an existing project, don't select an app type
 
 ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
-### Synctivate
-#### Custom Software
-#### [synctivate.com](https://synctivate.com)
 
-[John Hewitt](https://github.com/johnhewi) 
-[Robert Carrol](https://github.com/robswc)
 
 
 ### set local env to development, download and run ezinnit
@@ -84,3 +79,9 @@ to your root directory and input the values in the file and then run the script.
 * adds a chron job on server to automatically renew TLS certificates
 
 
+### Synctivate
+Custom Software
+[synctivate.com](https://synctivate.com)
+
+[John Hewitt](https://github.com/johnhewi) 
+[Robert Carrol](https://github.com/robswc)
