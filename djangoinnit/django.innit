@@ -2,10 +2,6 @@
 
 echo enter app name:
 read -r app_name
-[ -d /templates ] \
-&& echo "templates directory exists" \
-|| echo "creating templates folder..." \
-&& mkdir templates
 echo "creating virtual environment..."
 (python3 -m venv "venv" \
 && echo "activating virtual environment..." \
