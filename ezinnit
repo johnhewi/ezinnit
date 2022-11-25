@@ -1,8 +1,8 @@
 #!/bin/sh
-echo This script deploys the app via dokku and initializes the gitlab repo for automated continuous integration and deployment.
-echo you need a server running Ubuntu 20.04 with your ssh key added to the server
+echo This script configures your local repository and uses gitlab and dokku to initialize and upload your local git repository configured to automatically deploys to your remote server to be built and run in a docker container securely serving your app to your domain at a public IP.
+echo you need a server running Ubuntu 20.04 with your machine\'s ssh key added to the server
 echo you need a DNS A record pointing your domain to your server\'s ip address
-echo you need to have a gitlab account ssh access and a personal access token
+echo you need to have your machine\'s ssh keys registered with gitlab and a gitlab personal access token
 echo
 echo WHAT EZINNIT DOES:
 echo checks for ezinnit.config, if it doesn\'t exist, it prompts you for the values and creates an ezinnit.config file
@@ -204,9 +204,11 @@ git commit -m "commit ezinnit"
 git push -u origin main
 echo gitlab now deploying gitlab repository
 echo
-echo https://$gitlab_domain/$username/$appname
+echo https://"$gitlab_domain"/$username/$appname
 echo
-echo https://$domain
+echo https://"$domain"
+echo
+echo "$ip"
 echo
 echo that\'s ezinnit!
 echo https://synctivate.com
