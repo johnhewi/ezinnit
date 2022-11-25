@@ -202,12 +202,16 @@ wait
 git add .
 git commit -m "commit ezinnit"
 git push -u origin main
-echo gitlab now deploying gitlab repository
 echo
+echo
+echo
+echo your gitlab repository:
 echo https://"$gitlab_domain"/$username/$appname
 echo
+echo your domain:
 echo https://"$domain"
 echo
+echo your server ip:
 echo https://"$ip"
 echo
 echo that\'s ezinnit!
