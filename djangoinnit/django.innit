@@ -16,5 +16,7 @@ echo "creating virtual environment..."
 && mkdir ezinnit \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
 && bash ezinnit/ezinnit))
-echo run the following command to set your environment variable:
+echo
+echo
+echo now run the following commands to enable DEBUG \in your LOCAL environment variable:
 echo export ENV=DEVELOPMENT
