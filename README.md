@@ -16,11 +16,11 @@ mkdir ezinnit
 wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
 bash ezinnit/ezinnit
 ```
-ezinnit runs on the command line in the root directory of your project.
+(run ezinnit on the command line in your project directory)
 
-<br>
 
-#### If there is no ezinnit.config file, you will be prompted for:
+
+### You will be prompted for:
 1. gitlab username
 2. gitlab_domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
 3. [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
@@ -30,21 +30,6 @@ ezinnit runs on the command line in the root directory of your project.
 7. email address to use for registering with [letsencrypt](https://letsencrypt.org/)
 8. optional app type for additional initialization templates, django, flask or fastApi
 
-ezinnit deploys an app in a python environment to a docker container using [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
-At the push of a button, your app will be live and future changes will be automatically deployed.
-
-After running ezinnit, a docker container on your server is securely (https) serving your app to your specified domain, `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app. 
-
-There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. When running locally, debug mode will be ON. \
-If you're trying to deploy an existing project, don't select an app type 
-
-ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
-
-#### to download an ezinnit.config file to use in place of entering prompts:
-```bash
-wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit.config
-```
-
 ### requirements:
 * a python 3 virtual environment containing your app
 * your local machine's ssh key registered on gitlab
@@ -52,18 +37,12 @@ wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit.config
 * a new server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
 * this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
+
 ### warning!
 * this script creates new ssh keys on the remote server!
 * if you select an app type, ezinnit will write over files, including your procfile, settings.py, main.py etc.
 * app selection is only for use in initializing a brand new flask, django or fastApi app
 * if you want to deploy your environment as is, just hit enter when prompted for app type
-
-### ezinnit.config file
-if you don't have a ezinnit.config file in your root directory,
-the script will prompt you for the above values and create one.
-Alternatively, you can download the ezinnit.config template
-to your root directory and input the values in the file and then run the script.
-
 
 ### what ezinnit does
 * checks for ezinnit.config, if it doesn't exist, it prompts you for the values and creates an ezinnit.config file
@@ -76,7 +55,7 @@ to your root directory and input the values in the file and then run the script.
 * gets the runner token for the new repository from gitlab
 * copies ezinnit.config to server
 * runs server initialization script on the remote server, which does the following:
-* creates ssh keys on server
+* creates new ssh keys on server
 * uploads server's ssh keys to gitlab repository
 * downloads and installs [dokku](https://dokku.com/) on server
 * creates dokku app on server
@@ -87,6 +66,20 @@ to your root directory and input the values in the file and then run the script.
 * downloads and installs [dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt) on server
 * enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
 * adds a chron job on server to automatically renew TLS certificates
+
+<br>
+
+## start your project with ezinnit for CI/CD 
+
+ezinnit deploys an app in a python environment to a docker container using [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
+At the push of a button, your app will be live and future changes will be automatically deployed.
+
+After running ezinnit, a docker container on your server is securely (https) serving your app to your specified domain, `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app.
+
+There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. When running locally, debug mode will be ON. \
+If you're trying to deploy an existing project, don't select an app type
+
+ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
 
 ### Synctivate
