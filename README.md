@@ -72,6 +72,7 @@ bash ezinnit/ezinnit
 * downloads and installs [dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt) on server
 * enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
 * adds a chron job on server to automatically renew TLS certificates
+* starts your app in local environment in debug mode
 
 ### Your Web App Live and Automatically Deployed Now and Forever 
 
