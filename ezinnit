@@ -49,7 +49,7 @@ else
   echo enter gitlab domain \(\"gitlab.com\" or \"git.mydomain.com\"\)
   read -r gitlab_domain
 
-  echo enter gitlab personal token
+  echo enter gitlab personal access token
   read -r token
 
   echo app name becomes the name of the gitlab repository and the dokku app
