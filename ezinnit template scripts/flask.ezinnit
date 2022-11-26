@@ -75,3 +75,21 @@ echo "<html lang=\"en\">
    }
 </style>
 </html>" > templates/index.html
+
+echo "#!/bin/sh
+echo finding a port...
+openportfound=false
+portcheck=8000
+while [ \$openportfound = false ]
+do
+    stringlength=\$(lsof -Pi :\$portcheck -sTCP:LISTEN)
+    if [ \${#stringlength} = 0 ]
+    then
+        openportfound=true
+        openport=\$portcheck
+    else
+        portcheck=\$((portcheck+1))
+    fi
+done
+    echo starting app \in local dev environment...
+          source venv/bin/activate && export ENV=DEVELOPMENT && gunicorn --bind localhost:\$openport app:app" > ezrun
