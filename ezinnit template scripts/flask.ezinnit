@@ -1,4 +1,6 @@
 #!/bin/sh
+echo installing gunicorn
+pip install gunicorn
 source ezinnit/ezinnit.config
 
 echo creating procfile for flask app

@@ -1,25 +1,29 @@
 # <p align="center">ezinnit
-### <p align="center">Easily Initialize Continuous Integration and Continuous Deployment</p>
+### <p align="center">Automated CICD Utility</p>
+
 Continuous integration means that from the moment you begin your project, 
-commits to main are automatically deployed. 
+commits to main are automatically deployed.
 Continuous deployment means that from the moment you begin your project, 
 you always have a live build of your app in a container on a remote server 
-with a secure public connection. 
+with a secure public connection.
 
-<br>This script initializes your gitlab repository and installs dokku and a gitlab runner on your server. 
+After running ezinnit, your webapp will be running on your server, live at the https domain of your choice and future commits to your main branch will automatically deploy to the live app.
+
+ezinnit initializes and pushes your gitlab repository and deployment pipeline and then installs dokku and a gitlab runner on your server. 
 Your gitlab repository is configured to 
 automatically deploy any commits to your main branch
-to your server, where your app is automatically built in a container
-and served at your domain securely.
+to your server, where your app is automatically built in a container 
+and served at your public https domain.
 
 
-### To download and run ezinnit:
+
+### to deploy now and forever:
 ```bash
 mkdir ezinnit
 wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
 bash ezinnit/ezinnit
 ```
-(run ezinnit on the command line in your project directory)
+(run ezinnit in your project directory)
 
 
 
@@ -34,7 +38,7 @@ bash ezinnit/ezinnit
 8. optional app type for additional initialization templates, django, flask or fastApi
 
 ### requirements:
-* a python 3 virtual environment containing your app
+* a python virtual environment containing your app 
 * your local machine's ssh key registered on gitlab
 * your local machine's ssh key registered on your new server ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
 * a new server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
@@ -70,7 +74,7 @@ bash ezinnit/ezinnit
 * enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
 * adds a chron job on server to automatically renew TLS certificates
 
-### start your project with ezinnit for CI/CD 
+### Your Web App Live and Automatically Deployed Now and Forever 
 
 ezinnit deploys an app in a python environment to a docker container using [dokku](https://dokku.com/) and configures it for [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) and [continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) via [gitlab](https://gitlab.com).
 At the push of a button, your app will be live and future changes will be automatically deployed.
@@ -78,9 +82,10 @@ At the push of a button, your app will be live and future changes will be automa
 After running ezinnit, a docker container on your server is securely (https) serving your app to your specified domain, `https://yourdomain.com`. A new gitlab repository is created and configured for [CI/CD](https://en.wikipedia.org/wiki/CI/CD) via a gitlab pipeline and runner. Commits to the main branch in your new gitlab repository will be automatically deployed to the live app.
 
 There are additional features for initializing a completely new [flask](https://flask.palletsprojects.com/), [django](https://www.djangoproject.com/) or [fastApi](https://fastapi.tiangolo.com/) app. If you just want to deploy your local environment as is, do not enter an app type. If you set app type to django, flask or fastApi, some of your project files will be overwritten. For Django apps, debug mode will be OFF in the deployed app, but the local ENV will be set to DEVELOPMENT. When running locally, debug mode will be ON. \
+
 If you're trying to deploy an existing project, don't select an app type
 
-ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
+ezinnit could be developed into a deployment and integration platform, automating  
 
 ### to start a django project from scratch:
 
