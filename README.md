@@ -39,9 +39,9 @@ bash ezinnit/ezinnit
 
 ### requirements:
 * a python virtual environment containing your app 
+* a server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * your local machine's ssh key registered on gitlab
 * your local machine's ssh key registered on your new server ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
-* a new server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
 * this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
 
@@ -54,8 +54,7 @@ bash ezinnit/ezinnit
 ### what ezinnit does
 * checks for ezinnit.config, if it doesn't exist, it prompts you for the values and creates an ezinnit.config file
 * uses [toptotal](https://www.toptal.com/developers/gitignore) to create a .gitignore file in your project directory
-* installs gunicorn in local environment
-* runs template script for your platform if you've selected one
+* runs template script for your platform if you've selected one (django, flask and fastApi are included)
 * creates a gitlab pipeline for automated deployment (.gitlab-ci.yml) in your project directory
 * creates a requirements.txt file in your project directory
 * initializes git repository, sets initial branch to main, sets remote to new gitlab repository, commits and pushes to gitlab
