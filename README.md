@@ -3,7 +3,7 @@
 Continuous integration means that from the moment you begin your project, 
 commits to main are automatically deployed. 
 Continuous deployment means that from the moment you begin your project, 
-you have a live build of your app in a container on a remote server 
+you always have a live build of your app in a container on a remote server 
 with a secure public connection. 
 
 <br>This script initializes your gitlab repository and installs dokku and a gitlab runner on your server. 
@@ -25,9 +25,9 @@ bash ezinnit/ezinnit
 
 ### You will be prompted for:
 1. gitlab username
-2. gitlab_domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
+2. gitlab domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
 3. [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
-4. app name (becomes your gitlab repository name)
+4. app name (also becomes your gitlab repository name)
 5. ip address of your remote server
 6. the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
 7. email address to use for registering with [letsencrypt](https://letsencrypt.org/)
