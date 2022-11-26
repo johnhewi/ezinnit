@@ -41,7 +41,7 @@ bash ezinnit/ezinnit
 * a python virtual environment containing your app 
 * a server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * your local machine's ssh key registered on gitlab
-* your local machine's ssh key registered on your new server ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
+* your local machine's ssh key added to your new server's allowed hosts ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
 * for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
 * this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
 
