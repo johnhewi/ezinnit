@@ -237,5 +237,5 @@ then
       fi
   done
   echo starting local dev environment \in debug mode...
-  source venv/bin/activate && export ENV=DEVELOPMENT && cd $app_name && python manage.py runserver $openport
+  source venv/bin/activate && export ENV=DEVELOPMENT && python manage.py runserver $openport
 fi
