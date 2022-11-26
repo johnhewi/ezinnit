@@ -82,7 +82,7 @@ If you're trying to deploy an existing project, don't select an app type
 
 ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
-### to start a django project from scratch with one tool:
+### to start a django project from scratch:
 
 ```bash
 mkdir ezinnit
