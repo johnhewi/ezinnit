@@ -10,7 +10,6 @@ echo "creating virtual environment..."
 && pip install django \
 && echo starting django project... \
 && django-admin startproject "$app_name" \
-&& export ENV=DEVELOPMENT \
 && ( cd "$app_name" \
 && echo starting ezinnit... \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
