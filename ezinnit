@@ -239,4 +239,17 @@ then
   echo
   echo that\'s ezinnit!
   echo https://synctivate.com
+else
+  echo your gitlab repository:
+  echo https://"$gitlab_domain"/$username/$appname
+  echo
+  echo your domain:
+  echo https://"$domain"
+  echo
+  echo your server ip:
+  echo http://"$ip"
+  echo
+  echo that\'s ezinnit!
+  echo https://synctivate.com
 fi
+
