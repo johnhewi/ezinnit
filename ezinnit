@@ -52,13 +52,6 @@ else
   echo enter gitlab personal access token
   read -r token
 
-  if [ -f ezinnit/django.innit ]
-  then
-    appname
-  else
-    echo enter django project name
-    read -r django_project_name
-  fi
   echo app name becomes the name of the gitlab repository and the dokku app
   echo IF DJANGO PROJECT, APP NAME MUST MATCH DJANGO PROJECT NAME
   echo App name must begin with lowercase alphanumeric character, and cannot include uppercase characters, colons, or underscores
