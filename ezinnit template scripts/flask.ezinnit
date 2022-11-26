@@ -15,6 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():  # put application's code here
+    env = os.environ.get('ENV')
     if os.getenv('ENV'):
         env = \"DEVELOPMENT\"
         print('debug mode')
