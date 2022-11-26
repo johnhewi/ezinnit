@@ -2,7 +2,7 @@
 ### <p align="center">Automated CICD Utility</p>
 
 Continuous integration means that from the moment you begin your project, 
-commits to main are automatically deployed.
+frequent commits to main are automatically deployed.
 Continuous deployment means that from the moment you begin your project, 
 you always have a live build of your app in a container on a remote server 
 with a secure public connection.
