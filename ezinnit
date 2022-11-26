@@ -220,60 +220,8 @@ echo http://"$ip"
 echo
 echo that\'s ezinnit!
 echo https://synctivate.com
-if [ "$app_type" = "django" ]
+
+if [ -f ezrun ]
 then
-    echo finding open port...
-    openportfound=false
-    portcheck=8000
-    while [ $openportfound = false ]
-    do
-        stringlength=$(lsof -Pi :$portcheck -sTCP:LISTEN)
-        if [ ${#stringlength} = 0 ]
-        then
-            openportfound=true
-            openport=$portcheck
-        else
-            portcheck=$((portcheck+1))
-        fi
-    done
-    echo starting app \in local dev environment \in debug mode...
-    source venv/bin/activate && export ENV=DEVELOPMENT && python manage.py runserver $openport
-fi
-if [ "$app_type" = "flask" ]
-then
-      echo finding open port...
-          openportfound=false
-          portcheck=8000
-          while [ $openportfound = false ]
-          do
-              stringlength=$(lsof -Pi :$portcheck -sTCP:LISTEN)
-              if [ ${#stringlength} = 0 ]
-              then
-                  openportfound=true
-                  openport=$portcheck
-              else
-                  portcheck=$((portcheck+1))
-              fi
-          done
-      echo starting app \in local dev environment...
-      source venv/bin/activate && export ENV=DEVELOPMENT && gunicorn --bind localhost:$openport app:app
-fi
-if [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
-then
-      echo finding open port...
-          openportfound=false
-          portcheck=8000
-          while [ $openportfound = false ]
-          do
-              stringlength=$(lsof -Pi :$portcheck -sTCP:LISTEN)
-              if [ ${#stringlength} = 0 ]
-              then
-                  openportfound=true
-                  openport=$portcheck
-              else
-                  portcheck=$((portcheck+1))
-              fi
-          done
-      echo starting app \in local dev environment...
-      source venv/bin/activate && export ENV=DEVELOPMENT && uvicorn main:app --host 127.0.0.1 --port $openport
+  bash ezrun
 fi
