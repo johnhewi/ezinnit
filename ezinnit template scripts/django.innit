@@ -13,7 +13,6 @@ echo "creating virtual environment..."
 && export ENV=DEVELOPMENT \
 && ( cd "$app_name" \
 && echo starting ezinnit... \
-&& mkdir ezinnit \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
 && bash ezinnit/ezinnit))
 echo

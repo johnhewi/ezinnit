@@ -13,9 +13,8 @@ to your server, where your app is automatically built in a container
 and securely served  at your domain.
 
 
-### To set local env to development, download and run ezinnit:
+### To download and run ezinnit:
 ```bash
-export ENV=DEVELOPMENT
 mkdir ezinnit
 wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
 bash ezinnit/ezinnit
@@ -83,6 +82,13 @@ If you're trying to deploy an existing project, don't select an app type
 
 ezinnit is modular, and different deployment scripts and template scripts can be swapped out relatively easily.
 
+### to start a django project from scratch with one tool:
+
+```bash
+mkdir ezinnit
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
+bash ezinnit/ezinnit
+```
 
 ### Synctivate
 Custom Software
