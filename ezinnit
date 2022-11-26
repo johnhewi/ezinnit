@@ -7,7 +7,6 @@ echo
 echo WHAT EZINNIT DOES:
 echo checks for ezinnit.config, if it doesn\'t exist, it prompts you for the values and creates an ezinnit.config file
 echo uses toptotal to create a .gitignore file in your project directory
-echo installs gunicorn in local environment
 echo creates a procfile for your app in project directory
 echo runs optional app creation templates for your app
 echo creates a .gitlab-ci.yml \(gitlab pipeline\) file in your project directory
@@ -99,15 +98,19 @@ domain=$domain
 email=$email
 app_type=$app_type" >> ezinnit/ezinnit.config
 
-echo creating gitignore from www.toptotal.com/developers/gitignore
-echo "function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ ;}" >> \
-~/.bashrc && source ~/.bashrc
 
-echo creating gitignore
-gi python,pycharm >> .gitignore
-
-echo installing gunicorn
-pip install gunicorn
+# check for gitignore
+if [ -f .gitignore ]
+then
+  echo .gitignore found...
+else
+  echo no .gitignore found, creating...
+  echo creating gitignore from www.toptotal.com/developers/gitignore
+  echo "function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ ;}" >> \
+  ~/.bashrc && source ~/.bashrc
+  echo creating gitignore
+  gi python,pycharm >> .gitignore
+fi
 
 if [ "$app_type" = "flask" ]
 then

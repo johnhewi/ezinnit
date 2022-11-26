@@ -1,5 +1,7 @@
 #!/bin/sh
 source ezinnit/ezinnit.config
+echo installing gunicorn
+pip install gunicorn
 [ -d /templates ] \
 && echo "templates directory exists" \
 || echo "creating templates folder..." \
