@@ -1,16 +1,16 @@
 # <p align="center">ezinnit
 ### <p align="center">Easily Initialize Continuous Integration and Continuous Deployment</p>
 Continuous integration means that from the moment you begin your project, 
-commits to main should be automatically deployed. 
+commits to main are automatically deployed. 
 Continuous deployment means that from the moment you begin your project, 
-you should have a live build of your app in a container on a remote server 
+you have a live build of your app in a container on a remote server 
 with a secure public connection. 
 
-<br>This script initializes your gitlab repository and installs dokku on your server. 
-Your gitlab repository and dokku are configured to 
+<br>This script initializes your gitlab repository and installs dokku and a gitlab runner on your server. 
+Your gitlab repository is configured to 
 automatically deploy any commits to your main branch
 to your server, where your app is automatically built in a container
-and securely served  at your domain.
+and served at your domain securely.
 
 
 ### To download and run ezinnit:
