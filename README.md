@@ -86,13 +86,13 @@ ezinnit is modular, and different deployment scripts and template scripts can be
 
 ```bash
 mkdir ezinnit
-wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
+wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.innit -P ezinnit
 bash ezinnit/ezinnit
 ```
 
-### Synctivate
-Custom Software
-<br>[synctivate.com](https:synctivate.com)
+### <p align="center">Synctivate
+<p align="center">Custom Software
+<br><a href="https://synctivate">synctivate.com</a>
+<br><a href="https://github.com/johnhewi">John Hewitt</a>
+<br><a href="https://github.com/robswc">Robert Carroll</a>
 
-[John Hewitt](https://github.com/johnhewi) 
-<br>[Robert Carrol](https://github.com/robswc)
