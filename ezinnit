@@ -220,3 +220,22 @@ echo http://"$ip"
 echo
 echo that\'s ezinnit!
 echo https://synctivate.com
+if [ "$app_type" = "django" ]
+then
+  echo finding open port...
+  openportfound=false
+  portcheck=8000
+  while [ $openportfound = false ]
+  do
+      stringlength=$(lsof -Pi :$portcheck -sTCP:LISTEN)
+      if [ ${#stringlength} = 0 ]
+      then
+          openportfound=true
+          openport=$portcheck
+      else
+          portcheck=$((portcheck+1))
+      fi
+  done
+  echo starting local dev environment \in debug mode...
+  source venv/bin/activate && export ENV=DEVELOPMENT && cd $app_name && python manage.py runserver $openport
+fi
