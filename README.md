@@ -87,7 +87,7 @@ ezinnit is modular, and different deployment scripts and template scripts can be
 ```bash
 mkdir ezinnit
 wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit%20template%20scripts/django.innit -P ezinnit
-bash ezinnit/ezinnit
+bash ezinnit/django.innit
 ```
 
 ### <p align="center">Synctivate
