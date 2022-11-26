@@ -236,7 +236,7 @@ then
             portcheck=$((portcheck+1))
         fi
     done
-    echo starting local dev environment \in debug mode...
+    echo starting app \in local dev environment \in debug mode...
     source venv/bin/activate && export ENV=DEVELOPMENT && python manage.py runserver $openport
 fi
 if [ "$app_type" = "flask" ]
@@ -255,7 +255,7 @@ then
                   portcheck=$((portcheck+1))
               fi
           done
-      echo starting local dev environment \in debug mode...
+      echo starting app \in local dev environment...
       source venv/bin/activate && export ENV=DEVELOPMENT && gunicorn --bind localhost:$openport app:app
 fi
 if [ "$app_type" = "fastApi" ] || [ "$app_type" = "fastAPI" ] || [ "$app_type" = "fastapi" ]
@@ -274,6 +274,6 @@ then
                   portcheck=$((portcheck+1))
               fi
           done
-      echo starting local dev environment \in debug mode...
+      echo starting app \in local dev environment...
       source venv/bin/activate && export ENV=DEVELOPMENT && uvicorn main:app --host 127.0.0.1 --port $openport
 fi
