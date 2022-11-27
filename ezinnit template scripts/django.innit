@@ -15,6 +15,3 @@ django-admin startproject "$app_name"
 && echo starting ezinnit... \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
 && bash ezinnit/ezinnit)
-
-
-
