@@ -62,7 +62,7 @@ else
 
 
   echo create DNS \"A\" record now before continuing for best results
-  echo enter domains for new app separated by single spaces example: \"mydomain.com www.mydomain.com\"
+  echo enter domains for new app separated by commas. example: \"mydomain.com,www.mydomain.com\"
   read -r domain
 
   echo enter email for letsencrypt.org
