@@ -30,7 +30,7 @@ bash ezinnit/ezinnit
 ### You will be prompted for:
 1. gitlab username
 2. gitlab domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
-3. [gitlab personal access token](tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
+3. [gitlab personal access token](other/tutorial/tutorials/link_to_gitlab_and_dokku/get_personal_access_token.md)
 4. app name (also becomes your gitlab repository name)
 5. ip address of your remote server
 6. the domain or subdomain you wish to point to your new app, for example: `mynewapp.mydomain.com`
@@ -41,10 +41,10 @@ bash ezinnit/ezinnit
 * a python virtual environment (with pip) with your app installed (or to make a django project from scratch, see bottom of readme)
 * git
 * a gitlab account (gitlab.com accounts must be verified to use gitlab runners, but verification is free)
-* a server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
+* a server running Ubuntu 20.04 [how to create a digital ocean droplet](other/tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * your local machine's ssh key registered on gitlab
-* your local machine's ssh key added to your new server's allowed hosts ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
-* for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
+* your local machine's ssh key added to your new server's allowed hosts ([digital ocean tutorial](other/tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
+* for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](other/tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
 
 ### warning!
 * this script creates new ssh keys on the remote server!
