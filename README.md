@@ -27,6 +27,7 @@ bash ezinnit/ezinnit
 
 
 
+
 ### You will be prompted for:
 1. gitlab username
 2. gitlab domain (if your account is with gitlab.com, then the gitlab domain is `gitlab.com`)
