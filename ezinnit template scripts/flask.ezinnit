@@ -10,14 +10,16 @@ echo writing app.py
 echo "import os
 from flask import Flask, render_template
 
+env = os.environ.get('ENV')
+if os.getenv('ENV'):
+    env = \"DEVELOPMENT\"
+
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello_world():  # put application's code here
-    env = os.environ.get('ENV')
-    if os.getenv('ENV'):
-        env = \"DEVELOPMENT\"
+
     return render_template('index.html', env=env)
 
 
