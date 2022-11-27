@@ -18,7 +18,6 @@ def hello_world():  # put application's code here
     env = os.environ.get('ENV')
     if os.getenv('ENV'):
         env = \"DEVELOPMENT\"
-        print('debug mode')
     return render_template('index.html', env=env)
 
 
