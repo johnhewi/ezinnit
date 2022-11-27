@@ -19,6 +19,8 @@ app = FastAPI()
 env = os.environ.get('ENV')
 if os.getenv('ENV'):
     env = \"DEVELOPMENT\"
+else:
+    env = \"PRODUCTION\"
 
 @app.get(\"/\")
 async def root():
