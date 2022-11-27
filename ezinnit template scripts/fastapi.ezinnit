@@ -32,16 +32,35 @@ echo "#!/bin/sh
 echo finding a port...
 openportfound=false
 portcheck=8000
-while [ \$openportfound = false ]
+while [ \$openportfound = false ] && [ \$portcheck -lt 65537 ]
 do
-    stringlength=\$(lsof -Pi :\$portcheck -sTCP:LISTEN)
+    if [ \$portcheck == 65537 ]
+    then
+        portcheck=1025
+    fi
+
+    stringlength=\$(lsof -Pi :\"\$portcheck\" -sTCP:LISTEN)
+
     if [ \${#stringlength} = 0 ]
     then
         openportfound=true
         openport=\$portcheck
+        echo found open port: \$openport
     else
+        if [ \$portcheck == 7999 ]
+            then
+                echo \"no open ports found\"
+                openport=8000
+                break
+            fi
         portcheck=\$((portcheck+1))
     fi
 done
-echo starting app \in local dev environment...
-      source venv/bin/activate && export ENV=DEVELOPMENT && uvicorn main:app --host 127.0.0.1 --port \$openport" > ezrun
+if [ \$openportfound = true ]
+then
+    echo starting app \in local dev environment on port \$openport...
+    source venv/bin/activate && export ENV=DEVELOPMENT && uvicorn main:app --host 127.0.0.1 --port \$openport
+else
+    echo attempting to start app \in local dev environment with fastApi defaults...
+    source venv/bin/activate && export ENV=DEVELOPMENT && uvicorn main:app
+fi" > ezrun
