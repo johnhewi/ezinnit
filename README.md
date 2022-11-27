@@ -1,5 +1,5 @@
 # <p align="center">ezinnit
-### <p align="center">Automated CICD Utility</p>
+### <p align="center">Automated CICD Deployment Utility</p>
 
 Continuous integration means that from the moment you begin your project, 
 frequent commits to main are automatically deployed.

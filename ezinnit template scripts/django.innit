@@ -7,11 +7,13 @@ pip install django
 echo "creating django project..."
 django-admin startproject "$app_name"
 (cd "$app_name" \ python3 -m venv "venv" \
-&& python3 -m venv "venv" \
 && echo "activating virtual environment..." \
 && source "venv"/bin/activate \
 && echo installing django... \
 && pip install django \
 && echo starting ezinnit... \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
+&& echo "oneclick=django
+app_name=$app_name
+app_type=django"> ezinnitglobal.config \
 && bash ezinnit/ezinnit)
