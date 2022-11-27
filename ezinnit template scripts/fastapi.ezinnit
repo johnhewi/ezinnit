@@ -19,12 +19,14 @@ app = FastAPI()
 
 @app.get(\"/\")
 async def root():
-    return {\"message\": \"$appname is working. By the way, it was deployed with ezinnit from https://synctivate.com\"}
+    return {\"message\": \"$appname is working. By the way, it was deployed with ezinnit from https://synctivate.com\",
+        \"ENV\": env}\" > main.py
 
 
 @app.get(\"/hello/{name}\")
 async def say_hello(name: str):
-    return {\"message\": f\"Hi {name}, I'm $appname! Have you heard of ezinnit from https://synctivate.com?\"}
+    return {\"message\": f\"Hi {name}, I'm $appname! Have you heard of ezinnit from https://synctivate.com?\",
+        \"ENV\": env}" > main.py
 " > main.py
 
 echo creating ezrun...
