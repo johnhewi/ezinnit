@@ -24,7 +24,7 @@ dokku domains:clear-global
 
 echo setting domains to dokku app...
 
-for i in ${$domain// /}
+for i in ${$domain//,/}
 do
         dokku domains:add $appname $i
 done
