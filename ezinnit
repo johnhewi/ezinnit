@@ -31,7 +31,16 @@ echo https://synctivate.com
 echo
 echo
 
+username=""
+gitlab_domain=""
+token=""
+appname=""
+ip=""
+domain=""
+email=""
 app_type="ezinnit"
+oneclick=""
+
 
 if [ -f ezinnit/ezinnitglobal.config ]
 then
@@ -41,7 +50,7 @@ if [ -f ezinnit/ezinnit.config ]
 then
   echo config file found...
   # shellcheck disable=SC2039
-  source ezinnit/ezinnit.config
+  . ezinnit/ezinnit.config
 
 else
   echo no config file found, prompting for variables
@@ -59,15 +68,15 @@ else
   read -r ip
 
   echo create DNS \"A\" record now before continuing for best results
-  echo enter domains for new app separated by commas. example: \"mydomain.com,www.mydomain.com\"
+  echo enter domain\(or subdomain\) for new app. example: \"mysubdomain.mydomain.com\"
   read -r domain
 
   echo enter email for letsencrypt.org
   read -r email
 
-  if [ "$app_type" = "django" ]
+  if [ $oneclick = "django" ]
   then
-    echo django install detected...
+    echo django.innit detected...
   else
     echo app name becomes the name of your gitlab repository and the dokku app name on the server
     echo App name must begin with lowercase alphanumeric character, and cannot include uppercase characters, colons, or underscores
@@ -115,7 +124,7 @@ else
   echo no .gitignore found, creating...
   echo creating gitignore from www.toptotal.com/developers/gitignore
   echo "function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/\$@ ;}" >> \
-  ~/.bashrc && source ~/.bashrc
+  ~/.bashrc && . ~/.bashrc
   echo creating gitignore
   gi python,pycharm >> .gitignore
 fi
@@ -225,11 +234,8 @@ echo
 echo your gitlab repository:
 echo https://"$gitlab_domain"/$username/$appname
 echo
-echo your domains:
-for i in ${domain//,/ }
-do
-        echo https://"$i"
-done
+echo your domain:
+        echo https://"$domain"
 echo
 echo your server ip:
 echo http://"$ip"

@@ -8,7 +8,7 @@ echo "creating django project..."
 django-admin startproject "$app_name"
 (cd "$app_name" \ python3 -m venv "venv" \
 && echo "activating virtual environment..." \
-&& source "venv"/bin/activate \
+&& . "venv"/bin/activate \
 && echo installing django... \
 && pip install django \
 && echo starting ezinnit... \

@@ -1,9 +1,9 @@
 #! /bin/sh
 # shellcheck disable=SC1079
-source ezinnit/ezinnit.config
+. ezinnit/ezinnit.config
 ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa
 
-ssh_key=`cat /root/.ssh/id_rsa`
+ssh_key=$(cat /root/.ssh/id_rsa)
 echo ssh key: $ssh_key
 
 echo adding ssh key to gitlab
@@ -17,20 +17,13 @@ sudo DOKKU_TAG=v0.28.4 bash bootstrap.sh
 echo adding keys to dokku admin
 cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
 echo creating app
-dokku apps:create $appname
+dokku apps:create "$appname"
 echo clearing global domains
 dokku domains:clear-global
-
-
-echo setting domains to dokku app...
-
-for i in ${domain//,/ }
-do
-        dokku domains:add "$appname" "$i"
-done
-
+echo setting domain to dokku app...
+dokku domains:set "$appname" "$domain"
 echo setting proxy port to 80
-dokku proxy:ports-set $appname http:80:5000
+dokku proxy:ports-set "$appname" http:80:5000
 
 echo installing gitlab runner from gitlab-runner-downloads.s3.amazonaws.com
 # Download the binary for your system
