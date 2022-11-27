@@ -24,9 +24,9 @@ dokku domains:clear-global
 
 echo setting domains to dokku app...
 
-for i in ${$domain//,/}
+for i in ${domain//,/ }
 do
-        dokku domains:add $appname $i
+        dokku domains:add "$appname" "$i"
 done
 
 echo setting proxy port to 80

@@ -219,8 +219,11 @@ echo
 echo your gitlab repository:
 echo https://"$gitlab_domain"/$username/$appname
 echo
-echo your domain:
-echo https://"$domain"
+echo your domains:
+for i in ${domain//,/ }
+do
+        echo https://"$i"
+done
 echo
 echo your server ip:
 echo http://"$ip"
