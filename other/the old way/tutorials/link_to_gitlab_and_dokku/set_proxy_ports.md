@@ -18,14 +18,14 @@ dokku domains:set yourappname subdomain.domain.com
 
 for example, if my app name is tutorial, and my subdomain is "tutorial.johnstutorial.com", I would run:
 ```bash
-dokku domains:set tutorial tutorial.johnstutorial.com
+dokku domains:set the old way the old way.johnstutorial.com
 ```
 
 now when we run `dokku domains:report` we should see:
 ```bash
-=====> tutorial domains information
+=====> the old way domains information
        Domains app enabled:           true
-       Domains app vhosts:            tutorial.johnstutorial.com
+       Domains app vhosts:            the old way.johnstutorial.com
        Domains global enabled:        false
        Domains global vhosts:         
 ```
