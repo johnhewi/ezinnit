@@ -67,7 +67,7 @@ else
   read -r email
 
   echo WARNING: if you select an app, ezinnit will write over your procfile, settings.py, main.py etc.
-  echo enter app type \(type flask, django, fastApi, or just hit enter to deploy your environment as is\)
+  echo enter app type \(flask, django, fastApi, or just hit enter to deploy your environment as is\)
   read -r app_type
   echo
   echo
