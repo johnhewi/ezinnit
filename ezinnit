@@ -161,8 +161,13 @@ deploy:
   script: dokku-deploy
   after_script: [dokku-unlock]" > .gitlab-ci.yml
 
-echo creating requirements.txt
-pip freeze > requirements.txt
+if [ -f .requirement.txt ]
+then
+  echo requirements.txt found...
+else
+  echo creating requirements.txt
+  pip freeze > requirements.txt
+fi
 
 echo creating new gitlab repository
 # initialize git appname
