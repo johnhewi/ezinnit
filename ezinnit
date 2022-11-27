@@ -60,7 +60,9 @@ else
   echo new server\'s ip address
   read -r ip
 
-  echo enter domain for new app \(\"mynewapp.mydomain.com\" Create DNS \"A\" record now before continuing for best results.\)
+
+  echo create DNS \"A\" record now before continuing for best results
+  echo enter domains for new app separated by single spaces example: \"mydomain.com www.mydomain.com\"
   read -r domain
 
   echo enter email for letsencrypt.org
