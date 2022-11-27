@@ -236,19 +236,38 @@ echo "#!/bin/sh
 echo finding a port...
 openportfound=false
 portcheck=8000
-while [ \$openportfound = false ]
+while [ \$openportfound = false ] && [ \$portcheck -lt 65537 ]
 do
-    stringlength=\$(lsof -Pi :\$portcheck -sTCP:LISTEN)
+    if [ \$portcheck == 65537 ]
+    then
+        portcheck=1025
+    fi
+
+    stringlength=\$(lsof -Pi :\"\$portcheck\" -sTCP:LISTEN)
+
     if [ \${#stringlength} = 0 ]
     then
         openportfound=true
         openport=\$portcheck
+        echo found open port: \$openport
     else
+        if [ \$portcheck == 7999 ]
+            then
+                echo \"no open ports found\"
+                openport=8000
+                break
+            fi
         portcheck=\$((portcheck+1))
     fi
 done
+if [ \$openportfound = true ]
+then
+    echo starting app \in local dev environment on port \$openport...
+    source venv/bin/activate && export ENV=DEVELOPMENT && python manage.py runserver \$openport
+else
     echo starting app \in local dev environment \in debug mode...
-    source venv/bin/activate && export ENV=DEVELOPMENT && python manage.py runserver \$openport" > ezrun
+    source venv/bin/activate && export ENV=DEVELOPMENT && python manage.py runserver
+fi" > ezrun
 echo collecting static files
 python3 manage.py collectstatic
 echo making migrations
