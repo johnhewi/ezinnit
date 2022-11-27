@@ -11,8 +11,8 @@ echo "creating virtual environment..."
 && echo starting django project... \
 && django-admin startproject "$app_name" \
 && echo starting ezinnit... \
-&& wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
-&& bash ezinnit/ezinnit)
+&& (cd $app_name \ wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
+&& bash ezinnit))
 
 
 
