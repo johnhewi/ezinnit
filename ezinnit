@@ -44,6 +44,7 @@ oneclick=""
 
 if [ -f ezinnit/ezinnitglobal.config ]
 then
+  echo "ezinnitglobal.config exists"
   . ezinnit/ezinnitglobal.config
 fi
 if [ -f ezinnit/ezinnit.config ]
@@ -74,7 +75,7 @@ else
   echo enter email for letsencrypt.org
   read -r email
 
-  if [ $oneclick = "django" ]
+  if [ "$oneclick" = "django" ]
   then
     echo django.innit detected...
   else
