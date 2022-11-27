@@ -17,5 +17,5 @@ django-admin startproject "$app_name"
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
 && echo "oneclick=django
 app_name=$app_name
-app_type=django"> ezinnitglobal.config \
+app_type=django"> ezinnit.ezinnitglobal.config \
 && bash ezinnit/ezinnit)
