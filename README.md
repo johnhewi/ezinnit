@@ -62,8 +62,8 @@ bash ezinnit/ezinnit
 * runs server initialization script on the remote server, which does the following:
 * creates new ssh keys on server
 * uploads server's ssh keys to gitlab repository
-* downloads and installs [dokku](https://dokku.com/) on server
-* creates dokku app on server
+* downloads and installs [dokku](https://dokku.com/) on server (this takes a few minutes)
+* creates dokku app on server 
 * sets the domain for the dokku app on server
 * sets the apps port to 80:5000 on server
 * downloads and creates a gitlab runner on server
@@ -72,8 +72,9 @@ bash ezinnit/ezinnit
 * enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
 * adds a chron job on server to automatically renew TLS certificates
 * for django, flask and fastApi, creates and runs a script: `ezrun` to find an open port and run locally in development environment
+* when ezinnit completes, gitlab will automatically begin deploying your app to your server. ezinnit will give you a link to your new repository where you can check on the deployment status.
 
-to find an open port and run django, flask or fastApi ezinnit template apps locally in development environment:
+#### to find an open port and run django, flask or fastApi ezinnit template apps locally in development environment:
 ```bash
 bash ezrun
 ```
