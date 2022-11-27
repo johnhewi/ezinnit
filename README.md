@@ -38,16 +38,17 @@ bash ezinnit/ezinnit
 8. optional app template: django, flask or fastApi
 
 ### requirements:
-* a python virtual environment containing your app 
+* a python virtual environment (with pip) with your app installed (or to make a django project from scratch, see bottom of readme)
+* git
+* a gitlab account (gitlab.com accounts must be verified to use gitlab runners, but verification is free)
 * a server running Ubuntu 20.04 [how to create a digital ocean droplet](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
 * your local machine's ssh key registered on gitlab
 * your local machine's ssh key added to your new server's allowed hosts ([digital ocean tutorial](tutorial/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md))
 * for your domain to work, you need a DNS \"A\" record pointing your domain to your server ip address [(create the DNS \"A\" record before running ezinnit)](tutorial/tutorials/link_to_gitlab_and_dokku/point_url_to_dokku_app.md)
-* this script was originally designed to replace the steps in [this tutorial](tutorial/deployment_tutorial.md)
 
 ### warning!
 * this script creates new ssh keys on the remote server!
-* if you select an app template, ezinnit will write over files, including your procfile, settings.py, main.py etc.
+* if you select an app template, ezinnit will write over files, including your procfile, settings.py, main.py etc. Only use the templates for brand new projects.
 
 ### what ezinnit does
 * checks for ezinnit.config, if it doesn't exist, it prompts you for the values and creates an ezinnit.config file
@@ -70,9 +71,9 @@ bash ezinnit/ezinnit
 * downloads and installs [dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt) on server
 * enables encryption for app on server with TLS certificate from [letsencrypt](https://letsencrypt.org/) on server
 * adds a chron job on server to automatically renew TLS certificates
-* for django, flask and fastApi, creates and runs an ezrun script to run locally in dubug mode
+* for django, flask and fastApi, creates and runs a script: `ezrun` to find an open port and run locally in development environment
 
-to run django, flask or fastApi ezinnit template apps locally in development mode:
+to find an open port and run django, flask or fastApi ezinnit template apps locally in development environment:
 ```bash
 bash ezrun
 ```
@@ -80,7 +81,7 @@ bash ezrun
 ### Deploy Now and Forever
  
 Use ezinnit whenever you start a new webapp project. At the push of a button, your project will begin with a gitlab repository that automatically deploys main commits to a container on the server of your choice, where your app is running and available at the domain of your choice.
-<br><br>You can now develop for the true environment your app is intended for with instant feedback about how changes will impact real world usability. 
+<br><br>You can now develop for the true environment your app is intended for with instant feedback about how changes will impact real world usability. You know instantly if your app will build on a server and how it will behave during deployment.
 <br><br> You hit the ground running with a live app on your own server on your own domain, so you can focus on what only you can do.
 ### to start a django project from scratch:
 
