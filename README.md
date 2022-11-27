@@ -9,13 +9,13 @@ with a secure public connection.
 
 After running ezinnit, your webapp will be running on your server, live at the https domain of your choice and future commits to your main branch will automatically deploy to the live app.
 
-ezinnit initializes and pushes your gitlab repository and deployment pipeline and then installs dokku and a gitlab runner on your server. 
+In a completely automated process, ezinnit initializes and pushes your gitlab repository and deployment pipeline and then installs dokku and a gitlab runner on your server. 
 Your gitlab repository is configured to 
 automatically deploy any commits to your main branch
 to your server, where your app is automatically built in a container 
 and served at your public https domain.
 
-ezinnit includes app templates for new django, flask and fastApi projects
+ezinnit includes app templates for new django, flask and fastApi projects.
 
 ### to initiate continuous integration and deployment:
 ```bash
@@ -83,7 +83,7 @@ bash ezrun
  
 Use ezinnit whenever you start a new webapp project. At the push of a button, your project will begin with a gitlab repository that automatically deploys main commits to a container on the server of your choice, where your app is running and available at the domain of your choice.
 <br><br>You can now develop for the true environment your app is intended for with instant feedback about how changes will impact real world usability. You know instantly if your app will build in a container and how it will behave on a live server.
-<br><br> You hit the ground running with a live app on your own server on your own domain, so you can focus on what only you can do.
+<br><br> When you start a project with ezinnit, you're really doing CICD. From day one, you hit the ground running with a live app on your own server on your own domain, so you can focus on what only you can do.
 ### to start a django project from scratch:
 
 ```bash
