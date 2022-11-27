@@ -15,18 +15,16 @@ automatically deploy any commits to your main branch
 to your server, where your app is automatically built in a container 
 and served at your public https domain.
 
-ezinnit includes app templates for new django, flask and fastApi projects.
+ezinnit includes app templates for new django, flask and fastApi projects. 
+These templates are intended for starting completely new projects, and create a deployed, working site.
 
-### to initiate continuous integration and deployment:
+### to download and install ezinnit:
+in your project's root directory, run:
 ```bash
 mkdir ezinnit
 wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit
 bash ezinnit/ezinnit
 ```
-(run ezinnit in your project's root directory)
-
-
-
 
 ### You will be prompted for:
 1. gitlab username
@@ -53,10 +51,10 @@ bash ezinnit/ezinnit
 
 ### what ezinnit does
 * checks for ezinnit.config, if it doesn't exist, it prompts you for the values and creates an ezinnit.config file
-* uses [toptotal](https://www.toptal.com/developers/gitignore) to create a .gitignore file in your project directory
+* if there is no .gitignore in your project directory, uses [toptotal](https://www.toptal.com/developers/gitignore) to create a .gitignore file
 * runs app template script if you've selected one (django, flask and fastApi are included in this release)
 * creates a gitlab pipeline for automated deployment (.gitlab-ci.yml) in your project directory
-* creates a requirements.txt file in your project directory
+* if there is no requirements.txt file in your project directory, creates a requirements.txt file
 * initializes git repository, sets initial branch to main, sets remote to new gitlab repository, commits and pushes to gitlab
 * gets the runner token for the new repository from gitlab
 * copies ezinnit.config to server
