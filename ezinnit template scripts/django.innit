@@ -6,10 +6,12 @@ echo "installing django..."
 pip install django
 echo "creating django project..."
 django-admin startproject "$app_name"
-(cd "$app_name" \ python3 -m venv "venv" \
+(cd "$app_name" \
+&& echo creating virtual environment \
+&& python3 -m venv "venv" \
 && echo "activating virtual environment..." \
-&& source "venv"/bin/activate \
-&& echo installing django... \
+&& . "venv"/bin/activate \
+&& echo installing django in virtual environment... \
 && pip install django \
 && echo starting ezinnit... \
 && wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
