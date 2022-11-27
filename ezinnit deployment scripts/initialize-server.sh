@@ -20,8 +20,15 @@ echo creating app
 dokku apps:create $appname
 echo clearing global domains
 dokku domains:clear-global
-echo setting domain to dokku app
-dokku domains:set $appname $domain
+
+
+echo setting domains to dokku app...
+
+for i in ${$domain// /}
+do
+        dokku domains:add $appname $i
+done
+
 echo setting proxy port to 80
 dokku proxy:ports-set $appname http:80:5000
 
