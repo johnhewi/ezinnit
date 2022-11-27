@@ -33,6 +33,10 @@ echo
 
 app_type="ezinnit"
 
+if [ -f ezinnit/ezinnitglobal.config ]
+then
+  . ezinnit/ezinnitglobal.config
+fi
 if [ -f ezinnit/ezinnit.config ]
 then
   echo config file found...
@@ -51,15 +55,8 @@ else
   echo enter gitlab personal access token
   read -r token
 
-  echo app name becomes the name of the gitlab repository and the dokku app
-  echo IF DJANGO PROJECT, APP NAME MUST MATCH DJANGO PROJECT NAME
-  echo App name must begin with lowercase alphanumeric character, and cannot include uppercase characters, colons, or underscores
-  echo enter app name
-  read -r appname
-
   echo new server\'s ip address
   read -r ip
-
 
   echo create DNS \"A\" record now before continuing for best results
   echo enter domains for new app separated by commas. example: \"mydomain.com,www.mydomain.com\"
@@ -68,9 +65,19 @@ else
   echo enter email for letsencrypt.org
   read -r email
 
-  echo WARNING: if you select an app, ezinnit will write over your procfile, settings.py, main.py etc.
-  echo enter app type \(flask, django, fastApi, or just hit enter to deploy your environment as is\)
-  read -r app_type
+  if [ "$app_type" = "django" ]
+  then
+    echo django install detected...
+  else
+    echo app name becomes the name of your gitlab repository and the dokku app name on the server
+    echo App name must begin with lowercase alphanumeric character, and cannot include uppercase characters, colons, or underscores
+    echo enter app name
+    read -r appname
+
+    echo WARNING: if you select an app, ezinnit will write over your procfile, settings.py, main.py etc.
+    echo enter app type \(flask, django, fastApi, or just hit enter to deploy your environment as is\)
+    read -r app_type
+  fi
   echo
   echo
   echo Is everything correct?
@@ -99,7 +106,6 @@ ip=$ip
 domain=$domain
 email=$email
 app_type=$app_type" >> ezinnit/ezinnit.config
-
 
 # check for gitignore
 if [ -f .gitignore ]
