@@ -2,8 +2,12 @@
 
 echo enter app name:
 read -r app_name
-echo "creating virtual environment..."
-(python3 -m venv "venv" \
+echo "installing django..."
+pip install django
+echo "creating django project..."
+django-admin startproject "$app_name"
+(cd "$app_name" \ python3 -m venv "venv" \
+&& python3 -m venv "venv" \
 && echo "activating virtual environment..." \
 && source "venv"/bin/activate \
 && echo installing django... \
@@ -11,8 +15,8 @@ echo "creating virtual environment..."
 && echo starting django project... \
 && django-admin startproject "$app_name" \
 && echo starting ezinnit... \
-&& (cd "$app_name"/"$app_name" \ wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
-&& bash ezinnit))
+&& wget https://raw.githubusercontent.com/johnsyncs/ezinnit/main/ezinnit -P ezinnit \
+&& bash ezinnit)
 
 
 
