@@ -21,6 +21,9 @@ https://github.com/johnhewi
 env = 'PRODUCTION'
 if os.getenv('ENV') == 'DEVELOPMENT':
     env = 'DEVELOPMENT'
+    print('DEVELOPMENT ENVIRONMENT (Environment variable ENV set to DEVELOPMENT)')
+else:
+    print('PRODUCTION ENVIRONMENT (Environment variable ENV not set to DEVELOPMENT)')
 
 app = Flask(__name__)
 
