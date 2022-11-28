@@ -11,16 +11,19 @@ echo overwriting main.py...
 echo "from fastapi import FastAPI
 import os
 
+\"\"\"
+ezinnit helped build this main.py file
+Synctivate Custom Software
+https://synctivate.com
+John Hewitt
+https://github.com/johnhewi
+\"\"\"
+
 app = FastAPI()
 
-# deployment is ezinnit
-# www.synctivate.com
-
-env = os.environ.get('ENV')
-if os.getenv('ENV'):
-    env = \"DEVELOPMENT\"
-else:
-    env = \"PRODUCTION\"
+env = 'PRODUCTION'
+if os.getenv('ENV') == 'DEVELOPMENT':
+    env = 'DEVELOPMENT'
 
 @app.get(\"/\")
 async def root():

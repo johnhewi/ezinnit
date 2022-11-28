@@ -10,9 +10,17 @@ echo writing app.py
 echo "import os
 from flask import Flask, render_template
 
-env = os.environ.get('ENV')
-if os.getenv('ENV'):
-    env = \"DEVELOPMENT\"
+\"\"\"
+ezinnit helped build this app.py file
+Synctivate Custom Software
+https://synctivate.com
+John Hewitt
+https://github.com/johnhewi
+\"\"\"
+
+env = 'PRODUCTION'
+if os.getenv('ENV') == 'DEVELOPMENT':
+    env = 'DEVELOPMENT'
 
 app = Flask(__name__)
 
