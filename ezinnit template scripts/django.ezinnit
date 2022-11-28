@@ -47,7 +47,8 @@ DEBUG = False
 if os.getenv('ENV') == 'DEVELOPMENT':
     print('DEVELOPMENT ENVIRONMENT (Environment variable ENV set to DEVELOPMENT)')
     DEBUG = True
-    print('WARNING!!! DEBUG Mode is on! If you know you are running in a safe, local environment, ignore the warning, but know that DEBUG=True')
+    print('WARNING! DEBUG Mode is on! If you know you are running in a safe, local environment, ignore the warning, '
+          'but know that DEBUG=True')
 else:
     print('PRODUCTION ENVIRONMENT (Environment variable ENV not set to DEVELOPMENT)')
 
