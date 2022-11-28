@@ -37,7 +37,7 @@ bash ezinnit/ezinnit
 8. optional app template: django, flask or fastApi
 
 ### requirements:
-* a python virtual environment (with pip) with your app installed (or to make a django project from scratch, see bottom of readme)
+* a python virtual environment with your app installed (or to make a django project from scratch, see bottom of readme)
 * git
 * a gitlab account (gitlab.com accounts must be verified to use gitlab runners, but verification is free)
 * a server running Ubuntu 20.04 [how to create a digital ocean droplet](other/the_old_way/tutorials/digital_ocean_tutorial/create_digital_ocean_droplet.md)
